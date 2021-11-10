@@ -1,20 +1,20 @@
-import { storageService } from "./async-storage-service.js";
+import { storageService } from "../../../services/async-storage-service.js";
 import { utilService } from "../../../services/utils-service.js";
 
 export const mailService = {
     query,
     getById,
-    loggedinUser
+    // loggedinUser
 
 }
 
 const MAIL_KEY = 'emails';
 
 
-const loggedinUser = {
-    email: 'kodirules@appsus.com',
-    fullname: 'Kodi Yalouf'
-}
+// const loggedinUser = {
+//     email: 'kodirules@appsus.com',
+//     fullname: 'Kodi Yalouf'
+// }
 
 const gEmails = [
     {
