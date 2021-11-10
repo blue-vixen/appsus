@@ -1,3 +1,25 @@
+.mail-app {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.mail-app > * {
+    padding: 10px;
+}
+
+.side-bar > * {
+    margin: 5px;
+}
+
+.folders li {
+    padding: 2px;
+}
+
+.folders li:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+
 .grow1 {
     flex-grow:1;
 }
@@ -7,11 +29,31 @@
 }
 
 .mail-preview {
-    box-shadow: 1px 1px rgb(160, 160, 160);
+    box-shadow: 0 1px 0 rgb(160, 160, 160);
+    flex-wrap: nowrap;
+    margin-top: 20px;
+}
+
+.mail-preview li {
+    /* margin-inline-end: 20px; */
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .mail-preview:hover {
-    box-shadow: 1px 2px rgb(117, 117, 117);
+    box-shadow: 0 2px 0 rgb(117, 117, 117);
+    cursor: pointer;
+}
+
+.main-mail-display {
+    flex-direction: column;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .read {

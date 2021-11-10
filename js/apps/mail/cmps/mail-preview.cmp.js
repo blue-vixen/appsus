@@ -2,9 +2,15 @@ export default {
     name: 'mail-preview',
     props: ['email'],
     template: `
-        <div class="mail-preview flex unread">
-            <p class="grow1">{{email.from}}</p>
-            <p class="grow2">{{email.subject}}</p>
-        </div>
+        <ul class="mail-preview flex clean-list">
+            <li class="grow1">{{email.to || email.from}}</li>
+            <li class="grow2">{{email.subject}}</li>
+            <li class="grow2">{{email.body}}</li>
+            <div class="actions">
+                <button title="delete">✖</button>
+                <button title="expand">📝</button>
+                <button title="save to note">💌</button>
+            </div>         
+        </ul>
     `
 }

@@ -4,28 +4,28 @@ import { utilService } from "../../../services/utils-service.js";
 export const mailService = {
     query,
     getById,
-    // loggedinUser
+    getLoggedUser
 
 }
 
 const MAIL_KEY = 'emails';
 
 
-// const loggedinUser = {
-//     email: 'kodirules@appsus.com',
-//     fullname: 'Kodi Yalouf'
-// }
+const loggedinUser = {
+    email: 'kodirules@appsus.com',
+    fullname: 'Kodi Yalouf'
+}
 
 const gEmails = [
-    // {
-    //     id: utilService.makeId(),
-    //     status: 'sent',
-    //     subject: 'Miss you!',
-    //     body: 'Would love to catch up sometimes',
-    //     isRead: false,
-    //     sentAt: 1551133930594,
-    //     to: 'momo@momo.com'
-    // },
+    {
+        id: utilService.makeId(),
+        status: 'sent',
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false,
+        sentAt: 1551133930594,
+        to: 'momo@momo.com'
+    },
     {
         id: utilService.makeId(),
         status: 'inbox',
@@ -38,12 +38,17 @@ const gEmails = [
     }
 ]
 
+function getLoggedUser() {
+    return loggedinUser
+}
+
 function query(criteria) {
     let emails = storageService.query(MAIL_KEY)
     if (!emails || !emails.length) {
         emails = gEmails;
         storageService.save(MAIL_KEY, emails)
     }
+
     return Promise.resolve(emails);
 }
 
