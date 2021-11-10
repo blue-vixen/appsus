@@ -11,7 +11,7 @@ export default {
         </ul>
     `,
     created() {
-        console.log('Mail list created', this.emails)
+        // console.log('Mail list created', this.emails)
     },
     components: {
         mailPreview

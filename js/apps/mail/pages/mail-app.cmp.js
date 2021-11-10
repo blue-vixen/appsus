@@ -13,8 +13,8 @@ export default {
                 <mail-folder-list @filtered="setDisplay"/>
             </div>
             <div class="flex main-mail-display">
-                <mail-filter @filtered/>
-               <mail-list :emails="emails"/>
+                <mail-filter @filtered="setFilter"/>
+                <mail-list :emails="emails"/>
             </div>
         </section>
     
@@ -23,24 +23,32 @@ export default {
         return {
             emails: null,
             criteria: {
-                display: null,
+                txt: '',
+                display: 'inbox',
                 isRead: null,
-                isStared: null
+                isStarred: null
             }
         }
     },
     created() {
-        mailService.query(this.criteria)
-            .then(emails => {
-                console.log(emails)
-                this.emails = emails
-            })
+        // mailService.query(this.criteria)
+        //     .then(emails => {
+        //         console.log(emails)
+        //         this.emails = emails
+        //     })
 
     },
     methods: {
         setDisplay(folder) {
             this.criteria.display = folder;
             console.log(this.criteria)
+        },
+        setFilter(filterBy) {
+            const { msgStatus, txt } = filterBy
+            if (msgStatus === 'Read') this.criteria.isRead = true
+            else if (msgStatus === 'Unread') this.criteria.isRead = false
+            else this.criteria.isRead = null
+            this.criteria.txt = txt
         }
     },
     computed: {
@@ -52,5 +60,20 @@ export default {
         mailList,
         mailFolderList,
         mailFilter
+    },
+    watch: {
+        criteria: {
+            handler(newVal, oldVal) {
+                console.log('criteria has changed!')
+                mailService.query(this.criteria)
+                    .then(emails => {
+                        console.log(emails)
+                        this.emails = emails
+                    })
+            },
+            deep: true,
+            immediate: true
+        }
     }
+
 }
