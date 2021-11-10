@@ -4,8 +4,8 @@ export default {
     template: `
         <ul class="mail-preview clean-list" :class="markRead">
             <li class="star"></li>
-            <li>{{email.to || email.from}}</li>
-            <li>{{email.subject}} - {{email.body}}</li>
+            <li class="bold">{{email.to || email.from}}</li>
+            <li><span class="bold">{{email.subject}} -</span> {{email.body}}</li>
             <div class="actions">
                 <button title="delete" class="btn-delete"></button>
                 <button title="expand" class="btn-expand"></button>
