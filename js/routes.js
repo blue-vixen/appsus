@@ -13,24 +13,28 @@ const routes = [
         component: appHome
     },
 
-    // {
-    //     path: '/apps',
-    //     component: appsPage,
-    //     children: [
-    //         {
-    //             path: 'keep',
-    //             component: keepApp
-    //         },
-    //         {
-    //             path: 'mail',
-    //             component: mailApp
-    //         }
-    //     ]
-    // },
-        {
-            path: '/apps/keep',
-            component: keepApp
+    {
+        path: '/apps',
+        component: appsPage,
+        // children: [
+        //     {
+        //         path: 'keep',
+        //         component: keepApp
+        //     },
+        // {
+        //     path: 'mail',
+        //     component: mailApp
+        // }
+        // ]
     },
+    {
+        path: '/apps/keep',
+        component: keepApp
+    },
+    {
+        path: '/apps/mail',
+        component: mailApp
+    }
     // {
     //     path: '/about',
     //     component: aboutPage,

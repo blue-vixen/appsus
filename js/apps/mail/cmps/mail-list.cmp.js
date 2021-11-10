@@ -4,7 +4,7 @@ export default {
     name: 'mail-list',
     props: ['emails'],
     template: `
-        <ul class="mail-list">
+        <ul class="mail-list clean-list">
             <li v-for="email in emails" :key="email.id">
                 <mail-preview :email="email"/>
             </li>

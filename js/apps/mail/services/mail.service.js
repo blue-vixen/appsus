@@ -17,15 +17,15 @@ const MAIL_KEY = 'emails';
 // }
 
 const gEmails = [
-    {
-        id: utilService.makeId(),
-        status: 'sent',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
-        isRead: false,
-        sentAt: 1551133930594,
-        to: 'momo@momo.com'
-    },
+    // {
+    //     id: utilService.makeId(),
+    //     status: 'sent',
+    //     subject: 'Miss you!',
+    //     body: 'Would love to catch up sometimes',
+    //     isRead: false,
+    //     sentAt: 1551133930594,
+    //     to: 'momo@momo.com'
+    // },
     {
         id: utilService.makeId(),
         status: 'inbox',
