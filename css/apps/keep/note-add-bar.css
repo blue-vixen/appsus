@@ -1,0 +1,43 @@
+
+.note-add-bar{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 1rem;
+    width: fit-content;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.note-type-btns{
+    display: flex;
+}
+
+.note-type-btns > *{
+    font-family: fa;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+}
+
+.txt-input{
+    border: none;
+    width: 300px;
+    height: 40px;
+}
+
+.add-txt::before{
+    content: '\f08d';
+}
+
+.add-img::before{
+    content: '\f53f';
+}
+
+.add-youtube::before{
+    content: '\f1d8';
+}
+
+.add-todos::before{
+    content: '\f044';
+}
+

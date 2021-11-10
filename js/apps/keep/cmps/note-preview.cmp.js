@@ -7,9 +7,15 @@ export default {
     template: `
         <div class="note-preview">
             <note-details :note="note"/>
-            <note-edit-bar :note="note"/>
+            <note-edit-bar :note="note" @remove="remove"/>
         </div>
     `,
+
+methods:{
+    remove(noteId){
+        this.$emit('remove', noteId)
+    }
+},
 
 components: {
     noteDetails,

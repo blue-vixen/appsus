@@ -1,5 +1,7 @@
 import { noteService } from "../services/note.service.js";
 import noteList from '../cmps/note-list.cmp.js';
+import noteAdd from '../cmps/note-add.cmp.js';
+
 // import noteDetails from './note-details.cmp.js';
 // import noteFilter from '../cmps/note-filter.cmp.js';
 
@@ -8,9 +10,10 @@ export default {
 
     template: `
         <section class="note-app app-main">
-            <h2>KEEP</h2>
+            <h2>Let's KEEP it simple...</h2>
             <!-- <note-filter /> -->
-            <note-list :notes="notesToShow"  v-if="!selectedNote"/>
+            <note-add/>
+            <note-list :notes="notesToShow"  @remove="removeNote" v-if="!selectedNote"/>
             <!-- <book-details v-if="selectedBook" :book="selectedBook" @close="closeDetails"/> -->
         </section>
     `,
@@ -26,6 +29,28 @@ export default {
         console.log(this.notes);
     },
     methods: {
+        removeNote(id) {
+            noteService.remove(id)
+                .then(() => {
+                    // const msg = {
+                    //     txt: 'Deleted succesfully',
+                    //     type: 'success'
+                    // };
+                    // eventBus.$emit('showMsg', msg);
+                    this.notes = this.notes.filter(note => note.id !== id)
+                })
+                .catch(err => {
+                    console.log('err', err);
+                    // const msg = {
+                    //     txt: 'Error. Please try later',
+                    //     type: 'error'
+                    // };
+                    // eventBus.$emit('showMsg', msg);
+                });
+        },
+
+
+
         // selectBook(book) {
         //     this.selectedBook = book;
         // },
@@ -56,6 +81,7 @@ export default {
     },
     components: {
         noteList,
+        noteAdd,
         // noteFilter,
         // noteDetails
     }

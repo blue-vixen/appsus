@@ -21,7 +21,7 @@ const gNotes = [
         style: { backgroundColor: "#00d" }
     },
     {
-        id: "n102",
+        id: "n103",
         type: "note-img",
         info: {
             url: "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/2020BenDeLaCreme-Earnest-1585074372.jpg",
@@ -31,7 +31,7 @@ const gNotes = [
     },
     
     {
-        id: "n103",
+        id: "n104",
         type: "note-todos",
         info: {
             label: "Get my stuff together",
@@ -48,7 +48,7 @@ const gNotes = [
         }
     },
     {
-        id: "n102",
+        id: "n105",
         type: "note-img",
         info: {
             url: "https://dynamicmedia.livenationinternational.com/Media/n/a/c/5f9eeadd-cc3d-45aa-80dd-905ea5c3dd75.jpg",
@@ -57,7 +57,7 @@ const gNotes = [
         style: { backgroundColor: "#00d" }
     },
     {
-        id: "n102",
+        id: "n106",
         type: "note-img",
         info: {
             url: "https://img.wcdn.co.il/f_auto,q_auto,w_1200,t_54/2/7/2/1/2721521-46.jpg",
@@ -67,7 +67,7 @@ const gNotes = [
     },
     
     {
-        id: "n103",
+        id: "n107",
         type: "note-todos",
         info: {
             label: "Get my stuff together",
@@ -89,6 +89,7 @@ export const noteService = {
     query,
     getById,
     makeId,
+    remove,
 }
 
 function query() {
@@ -107,6 +108,10 @@ function _createNotes() {
 
 function getById(noteId) {
     return storageService.get(NOTES_KEY, noteId)
+}
+
+function remove(noteId) {
+    return storageService.remove(NOTES_KEY, noteId);
 }
 
 function saveToStorage(key, value) {

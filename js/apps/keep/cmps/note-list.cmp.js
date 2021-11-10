@@ -5,14 +5,15 @@ export default {
     template: `
         <ul class="note-list clean-list">
             <li v-for="note in notes" :key="note.id" class="note-list-container">
-                <div class="note-card">
-                <note-preview :note="note"/>
-                </div>
+                <note-preview :note="note" @remove="remove"/>
             </li>
         </ul>
     `,
 
     methods: {
+        remove(noteId) {
+            this.$emit('remove', noteId);
+        },
         log() {
             console.log('Logging.....');
         }

@@ -1,0 +1,36 @@
+
+.note-edit-bar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    padding-inline-start: 0px;
+}
+
+.note-edit-bar .edit-btns{
+    background-color: transparent;
+    border: none;
+    padding: 10px 0px;
+    font-family: fa;
+    font-size: 1rem;
+}
+
+.edit-pin::before{
+    content: '\f08d';
+}
+
+.edit-color::before{
+    content: '\f53f';
+}
+
+.edit-send::before{
+    content: '\f1d8';
+}
+
+.edit-edit::before{
+    content: '\f044';
+}
+
+.edit-delete::before{
+    content: '\f2ed';
+}
