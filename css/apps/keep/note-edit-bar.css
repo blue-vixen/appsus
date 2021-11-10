@@ -15,6 +15,8 @@
     font-size: 1rem;
 }
 
+
+
 .edit-pin::before{
     content: '\f08d';
 }
@@ -33,4 +35,37 @@
 
 .edit-delete::before{
     content: '\f2ed';
+}
+
+
+
+/* ------color-plette-------- */
+
+.edit-color-section{
+    position: relative;
+}
+
+.color-plette{
+    position: absolute;
+    display:none;
+    gap: 5px;
+}
+
+.edit-color-section:hover .color-plette{
+    display:flex;
+}
+
+.color-plette .color-select{
+    height: 20px;
+    width: 20px;
+   border: 1px solid rgb(221, 219, 219);
+   border-radius: 50%;
+}
+
+.color-red{
+    background-color: #f28b82;
+}
+
+.color-orange{
+    background-color: #fbbc04;
 }
