@@ -15,11 +15,21 @@ const gNotes = [
         id: "n102",
         type: "note-img",
         info: {
-            url: "http://some-img/me",
-            title: "Bobi and Me"
+            url: "https://i.pinimg.com/236x/56/e8/71/56e8715f113c1244257bff1e45e539f6--rupaul-drag-drag-race.jpg",
+            title: " Yekaterina Lobaznyuk"
         },
         style: { backgroundColor: "#00d" }
     },
+    {
+        id: "n102",
+        type: "note-img",
+        info: {
+            url: "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/2020BenDeLaCreme-Earnest-1585074372.jpg",
+            title: "BenDeLaCreme"
+        },
+        style: { backgroundColor: "#00d" }
+    },
+    
     {
         id: "n103",
         type: "note-todos",
@@ -36,7 +46,43 @@ const gNotes = [
                 }
             ]
         }
-    }
+    },
+    {
+        id: "n102",
+        type: "note-img",
+        info: {
+            url: "https://dynamicmedia.livenationinternational.com/Media/n/a/c/5f9eeadd-cc3d-45aa-80dd-905ea5c3dd75.jpg",
+            title: "Trixie Mattel"
+        },
+        style: { backgroundColor: "#00d" }
+    },
+    {
+        id: "n102",
+        type: "note-img",
+        info: {
+            url: "https://img.wcdn.co.il/f_auto,q_auto,w_1200,t_54/2/7/2/1/2721521-46.jpg",
+            title: "Alaska Thunderfuck"
+        },
+        style: { backgroundColor: "#00d" }
+    },
+    
+    {
+        id: "n103",
+        type: "note-todos",
+        info: {
+            label: "Get my stuff together",
+            todos: [
+                {
+                    txt: "Driving liscence",
+                    doneAt: null
+                },
+                {
+                    txt: "Coding power",
+                    doneAt: 187111111
+                }
+            ]
+        }
+    },
 ];
 
 export const noteService = {

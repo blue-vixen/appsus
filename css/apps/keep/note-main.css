@@ -1,6 +1,55 @@
 .note-preview{
     background-color: lightcoral;
     width: 200px;
+    min-height: 150px;
     margin: 20px;
-    color: black;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.note-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: center;
+    padding-inline-start: 0px;
+}
+
+.edit-bar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    padding-inline-start: 0px;
+}
+
+.edit-bar .edit-btns{
+    background-color: lightgreen;
+    padding: 5px 10px;
+}
+
+.note-details{
+    padding: 10px;
+    box-shadow: lightsteelblue;
+}
+
+
+
+
+/* note-img */
+
+.note-img img{
+width: 184px;
+border-radius: 3px;
+}
+
+
+
+
+/* helpers */
+
+.note-title{
+    text-align: center;
 }
