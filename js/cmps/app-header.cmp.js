@@ -4,11 +4,11 @@ export default {
             <div class="logo">
                 <h3>Appsus ftw</h3>
             </div>
-            <!-- <nav>
+            <nav>
                 <router-link to="/">Home</router-link> |
-                <router-link to="/book">Books</router-link> |
-                <router-link to="/about">About</router-link>
-            </nav> -->
+                <router-link to="/apps/keep">Keep</router-link> |
+                <router-link to="/apps/mail">Mail</router-link>
+            </nav>
         </header>
     `,
 }
