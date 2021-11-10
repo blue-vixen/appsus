@@ -20,18 +20,14 @@
     background-color: lightgray;
 }
 
-.grow1 {
-    flex-grow:1;
-}
-
-.grow2 {
-    flex-grow: 2;
-}
-
 .mail-preview {
     box-shadow: 0 1px 0 rgb(160, 160, 160);
     flex-wrap: nowrap;
-    margin-top: 20px;
+    margin-top: 2px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr 8fr 2fr;
+    grid-template-rows: 1fr;
 }
 
 .mail-preview li {
@@ -54,6 +50,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    font-family: fa;
+    font-size: 1rem;
+    color: rgb(160, 160, 160)
 }
 
 .read {
@@ -62,4 +61,21 @@
 
 .unread {
     background-color: white;
+}
+
+.btn-delete::before {
+    content: '\f1f8';
+}
+
+.btn-expand::before {
+    content: '\f658'
+}
+.btn-note::before {
+    content: '\f1d8'
+}
+
+.star::before{
+    font-family: fa;
+    font-style: normal;
+    content: '\f005'
 }
