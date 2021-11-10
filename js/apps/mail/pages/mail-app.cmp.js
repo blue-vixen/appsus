@@ -5,7 +5,10 @@ export default {
 
     template: `
         <section class="mail-app app-main">
-            <mail-list :emails="emailToShow"/>
+            <button>Compose</button>
+            <ul class="clean-list"></ul>
+            <h3>Welcome to your mail</h3>
+            <mail-list :emails="emails"/>
         </section>
     
     `,
@@ -16,7 +19,11 @@ export default {
     },
     created() {
         mailService.query()
-            .then(emails => this.emails = emails)
+            .then(emails => {
+                console.log(emails)
+                this.emails = emails
+            })
+
     },
     computed: {
         emailsToShow() {
