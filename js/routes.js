@@ -13,19 +13,23 @@ const routes = [
         component: appHome
     },
 
-    {
-        path: '/apps',
-        component: appsPage,
-        children: [
-            {
-                path: 'keep',
-                component: keepApp
-            },
-            {
-                path: 'mail',
-                component: mailApp
-            }
-        ]
+    // {
+    //     path: '/apps',
+    //     component: appsPage,
+    //     children: [
+    //         {
+    //             path: 'keep',
+    //             component: keepApp
+    //         },
+    //         {
+    //             path: 'mail',
+    //             component: mailApp
+    //         }
+    //     ]
+    // },
+        {
+            path: '/apps/keep',
+            component: keepApp
     },
     // {
     //     path: '/about',
@@ -42,10 +46,7 @@ const routes = [
     //     ]
 
     // },
-    // {
-    //     path: '/book',
-    //     component: bookApp
-    // },
+
     // {
     //     path: '/book/:bookId',
     //     component: bookDetails

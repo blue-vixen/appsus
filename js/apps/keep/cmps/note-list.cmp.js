@@ -2,22 +2,25 @@ import notePreview from './note-preview.cmp.js';
 
 
 export default {
-    props: ['noets'],
+    props: ['notes'],
     template: `
         <ul class="note-list">
             <li v-for="note in notes" :key="note.id" class="note-list-container">
+                <div class="note-card">
                 <note-preview :note="note"/>
                 <!-- <div class="actions">
                     <router-link :to="'/book/'+book.id">Details</router-link>
                 </div> -->
+                </div>
             </li>
         </ul>
 
     `,
+
     methods: {
-        // log() {
-        //     console.log('Logging.....');
-        // }
+        log() {
+            console.log('Logging.....');
+        }
     },
     components: {
         notePreview

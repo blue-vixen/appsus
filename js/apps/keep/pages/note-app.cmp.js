@@ -8,8 +8,9 @@ export default {
 
     template: `
         <section class="note-app app-main">
+            <h2>KEEP</h2>
             <!-- <note-filter /> -->
-            <note-list :notes="notesToShow" @selected="selectNote" v-if="!selectedNote"/>
+            <note-list :notes="notesToShow"  v-if="!selectedNote"/>
             <!-- <book-details v-if="selectedBook" :book="selectedBook" @close="closeDetails"/> -->
         </section>
     `,
@@ -37,6 +38,7 @@ export default {
     },
     computed: {
        notesToShow() {
+           return this.notes
             // if (!this.filterBy) return this.books;
             // const minPrice = +this.filterBy.fromPrice;
             // const maxPrice = +this.filterBy.toPrice;

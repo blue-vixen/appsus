@@ -1,12 +1,8 @@
 import { storageService } from "../../../services/async-storage-service.js";
 
-
-
 const NOTES_KEY = 'notes';
 
-
-
-const notes = [
+const gNotes = [
     {
         id: "n101",
         type: "note-txt",
@@ -57,8 +53,8 @@ function query() {
 function _createNotes() {
     let notes = loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
-        notes = gBooks;
-        saveToStorage(BOOKS_KEY, notes);
+        notes = gNotes;
+        saveToStorage(NOTES_KEY, gNotes);
     }
     return notes;
 }
