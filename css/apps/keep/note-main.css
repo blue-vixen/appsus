@@ -1,3 +1,6 @@
+
+
+
 .note-preview{
     background-color: lightcoral;
     width: 200px;
@@ -28,6 +31,7 @@
 .edit-bar .edit-btns{
     background-color: lightgreen;
     padding: 5px 10px;
+    font-family: fa;
 }
 
 .note-details{
