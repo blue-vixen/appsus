@@ -1,6 +1,7 @@
 @import 'helpers.css';
 @import "./apps/keep/note-main.css";
 @import 'apps/mail/mail-preview.css';
+@import 'fonts.css';
 
 * {
     box-sizing: border-box;
