@@ -63,3 +63,7 @@
 .unread {
     background-color: white;
 }
+
+.btn-expand::before {
+    content: '\f658'
+}

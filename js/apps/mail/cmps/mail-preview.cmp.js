@@ -8,7 +8,7 @@ export default {
             <li class="grow2">{{email.body}}</li>
             <div class="actions">
                 <button title="delete">✖</button>
-                <button title="expand">📝</button>
+                <button title="expand" class="btn-expand">📝</button>
                 <button title="save to note">💌</button>
             </div>         
         </ul>
