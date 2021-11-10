@@ -6,7 +6,9 @@ export default {
     template: `
         <section class="mail-app app-main">
             <button>Compose</button>
-            <ul class="clean-list"></ul>
+            <ul class="clean-list">
+                <li>Inbox</li>
+            </ul>
             <h3>Welcome to your mail</h3>
             <mail-list :emails="emails"/>
         </section>
