@@ -1,6 +1,6 @@
 import appHome from './pages/app-home.cmp.js'
 import appsPage from './pages/app-home.cmp.js'
-import keepApp from './apps/keep/pages/note-index.cmp.js'
+import keepApp from './apps/keep/pages/note-app.cmp.js'
 // import bookDetails from './pages/book-details.cmp.js'
 // import bookAdd from './pages/book-add.cmp.js'
 
