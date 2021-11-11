@@ -39,21 +39,8 @@ export default {
         removeNote(id) {
             noteService.remove(id)
                 .then(() => {
-                    // const msg = {
-                    //     txt: 'Deleted succesfully',
-                    //     type: 'success'
-                    // };
-                    // eventBus.$emit('showMsg', msg);
                     this.notes = this.notes.filter(note => note.id !== id)
                 })
-                .catch(err => {
-                    console.log('err', err);
-                    // const msg = {
-                    //     txt: 'Error. Please try later',
-                    //     type: 'error'
-                    // };
-                    // eventBus.$emit('showMsg', msg);
-                });
         },
 
         changeBgColor(noteId, color) {
@@ -70,6 +57,7 @@ export default {
             })
         }
     },
+    
     computed: {
         pinedToShow() {
             return this.pinedNotes = this.notes.filter(note => note.isPinned)
@@ -78,6 +66,7 @@ export default {
             return this.unPinedNotes = this.notes.filter(note => !note.isPinned)
         },
     },
+
     watch: {
 
     },

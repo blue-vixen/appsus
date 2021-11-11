@@ -8,6 +8,7 @@ const gNotes = [
         type: "note-txt",
         isPinned: false,
         info: {
+            title: "Title",
             txt: "Fullstack Me Baby!"
         },
         style: { backgroundColor: "#aecbfa" }
@@ -18,7 +19,7 @@ const gNotes = [
         isPinned: false,
         info: {
             url: "https://i.pinimg.com/236x/56/e8/71/56e8715f113c1244257bff1e45e539f6--rupaul-drag-drag-race.jpg",
-            title: " Yekaterina Lobaznyuk"
+            title: "Yekaterina Lobaznyuk"
         },
         style: { backgroundColor: "#f5f5f5" }
     },
@@ -64,11 +65,11 @@ const gNotes = [
     },
     {
         id: "n106",
-        type: "note-img",
+        type: "note-youtube",
         isPinned: false,
         info: {
-            url: "https://img.wcdn.co.il/f_auto,q_auto,w_1200,t_54/2/7/2/1/2721521-46.jpg",
-            title: "Alaska Thunderfuck"
+            url: "https://www.youtube.com/watch?v=t-DJIgsPN0o",
+            title: "RuPaul - Kitty Girl"
         },
         style: { backgroundColor: "#ffa07a" }
     },
@@ -78,7 +79,7 @@ const gNotes = [
         type: "note-todos",
         isPinned: true,
         info: {
-            label: "Get my stuff together",
+            title: "Get my stuff together",
             todos: [
                 {
                     txt: "Driving liscence",
@@ -104,11 +105,6 @@ export const noteService = {
 }
 
 function query() {
-    let notes = _createNotes()
-    return notes;
-}
-
-function _createNotes() {
     let notes = loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
         notes = gNotes;
@@ -116,6 +112,15 @@ function _createNotes() {
     }
     return notes;
 }
+
+// function _createNotes() {
+//     let notes = loadFromStorage(NOTES_KEY);
+//     if (!notes || !notes.length) {
+//         notes = gNotes;
+//         saveToStorage(NOTES_KEY, gNotes);
+//     }
+//     return notes;
+// }
 
 function changeBgColor(noteId, color) {
     return getById(noteId)
@@ -125,12 +130,12 @@ function changeBgColor(noteId, color) {
         });
 }
 
-function pinNote(noteId){
+function pinNote(noteId) {
     return getById(noteId)
-    .then(note => {
-        note.isPinned = !note.isPinned
-        storageService.put(NOTES_KEY, note)
-    });
+        .then(note => {
+            note.isPinned = !note.isPinned
+            storageService.put(NOTES_KEY, note)
+        });
 }
 
 function getById(noteId) {

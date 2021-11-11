@@ -20,16 +20,27 @@
     font-size: 1.5rem;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .add-youtube{
     font-family: fab;
 }
 
+.add-keep-btn{
+    font-size: 1.8rem;
+    color: rgb(110, 161, 58);
+}
+
 .txt-input{
     border: none;
     width: 300px;
     height: 40px;
+}
+
+.separator{
+    height: 100%;
+    border-left: 1px solid rgb(194, 192, 192);
 }
 
 .add-txt::before{
@@ -46,5 +57,9 @@
 
 .add-todos::before{
     content: '\f0ca';
+}
+
+.add-keep-btn::before{
+    content: '\f067';
 }
 

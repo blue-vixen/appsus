@@ -1,7 +1,7 @@
 import noteTxt from '../cmps/note-types-cmps/note-txt.cmp.js';
 import noteImg from '../cmps/note-types-cmps/note-img.cmp.js';
 import noteTodos from '../cmps/note-types-cmps/note-todos.cmp.js';
-
+import noteYoutube from '../cmps/note-types-cmps/note-youtube.cmp.js';
 
 
 export default {
@@ -23,6 +23,7 @@ data() {
 components: {
     noteTxt,
     noteImg,
-    noteTodos
+    noteTodos,
+    noteYoutube
 },
 }
