@@ -31,13 +31,12 @@ export default {
                 isRead: null,
                 isStarred: null
             },
-            selectedEmail: null
+            selectedEmail: null,
+            unreadCount: 0
         }
     },
     created() {
         eventBus.$on('remove', this.removeEmail)
-        eventBus.$on('updated', this.update)
-
     },
     methods: {
         composeNew() {
@@ -83,15 +82,23 @@ export default {
     watch: {
         criteria: {
             handler(newVal, oldVal) {
+
                 console.log('criteria has changed!')
                 mailService.query(this.criteria)
                     .then(emails => {
-                        console.log(emails)
                         this.emails = emails
+                        // emails.forEach(email => {
+                        //     if (email.isRead !== true && email.status === 'inbox') this.unreadCount++
+                        // })
                     })
             },
             deep: true,
             immediate: true
+        },
+        unreadCount: {
+            handler() {
+                eventBus.$emit('updateCount', this.unreadCount)
+            }
         }
     },
     components: {

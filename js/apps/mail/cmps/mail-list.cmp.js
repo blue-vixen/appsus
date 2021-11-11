@@ -1,3 +1,4 @@
+import { mailService } from '../services/mail.service.js';
 import { eventBus } from '../../../services/event-bus-service.js';
 import mailPreview from './mail-preview.cmp.js';
 import mailExpand from "../cmps/mail-expand.cmp.js";
@@ -9,34 +10,33 @@ export default {
     template: `
         <ul class="mail-list clean-list">
             <li v-for="email in emails" :key="email.id">
-            <mail-preview :email="email" @updateCount="updateCount" @click.native="select(email)"/>
-            <mail-expand :email="selectedEmail" v-if="selectedEmail === email"/>
+                <mail-preview :email="email" @click.native="select(email)"/>
+                <mail-expand :email="selectedEmail" v-if="selectedEmail && selectedEmail === email"/>
             </li>
         </ul>
     `,
     data() {
         return {
-            unreadCount: 0,
             selectedEmail: null
         }
 
     },
     created() {
-        // console.log('Mail list created', this.emails)
+
     },
     methods: {
-        updateCount() {
-            this.unreadCount++
-        },
+        // updateCount(num) {
+        //     this.unreadCount += num;
+        // },
         select(email) {
             if (this.selectedEmail === email) this.selectedEmail = null
             else this.selectedEmail = email
-            // this.$emit('selected', email)
-        }
+            // if (this.selectedEmail && this.selectedEmail.isRead === false) mailService.markRead(this.selectedEmail.id)
+        },
 
     },
     watch: {
-        unreadCount: {
+        selectedEmail: {
             handler() {
                 eventBus.$emit('updateCount', this.unreadCount);
             }
