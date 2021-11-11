@@ -19,42 +19,43 @@ export default {
                     <div class="color-select color-purple" @click="changeColor(note.id, '#d7aefb')" title="Purple"></div>
                 </div>
             </div>
-            <button class="edit-send edit-btns"></button>
-            <button class="edit-edit edit-btns" @click="send(note)"></button>
+            <button class="edit-send edit-btns" @click="send(note)"></button>
+            <button class="edit-edit edit-btns"></button>
             <button class="edit-delete edit-btns" @click="remove(note.id)"></button>
 
         </div>
     `,
 
-    methods:{
-        remove(noteId){
+    methods: {
+        remove(noteId) {
             eventBus.$emit('remove', noteId)
         },
 
-        changeColor(noteId, color){
-            eventBus.$emit('colorChanged',noteId, color)
+        changeColor(noteId, color) {
+            eventBus.$emit('colorChanged', noteId, color)
         },
 
-        pinNote(noteId){
-            eventBus.$emit('pinNote',noteId)
+        pinNote(noteId) {
+            eventBus.$emit('pinNote', noteId)
         },
 
-        send(note){
-            eventBus.$emit('sendKeep',note) 
+        send(note) {
+            console.log(note)
+            this.$router.push({ path: `/mail/compose?subject=${note.info.title}` })
         }
     },
 
-    computed:{
-        pinnedNoteStyle(){
+    computed: {
+        pinnedNoteStyle() {
             if (this.note.isPinned)
-            return '#ffa500'
+                return '#ffa500'
         }
     },
     components: {
         eventBus,
     },
 
-    
+
 
 
 
