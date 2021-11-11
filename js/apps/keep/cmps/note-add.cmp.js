@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus-service.js'
 
 
 export default {
@@ -32,20 +33,21 @@ export default {
             let noteType = this.noteType
             switch (noteType) {
                 case 'noteText':
-                    console.log("txt");
+                    this.creatTxtNote()
                     break;
                 case 'noteImg':
-                    console.log("img");
+                    this.creatImgNote()
                     break;
                 case 'noteYoutube':
-                    console.log("vid");
+                    this.creatYoutubeNote()
                     break;
                 case 'noteTodos':
-                    
+                    this.creatTodosNote()
                     break;
             }
             this.inputVal = null
         },
+
         changeType(type) {
             this.noteType = type
             switch (type) {
@@ -64,6 +66,73 @@ export default {
             }
             console.log(this.noteType);
         },
+
+        creatTxtNote() {
+            const note = {
+                id: null,
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: this.inputVal,
+                    txt: "Insert your text here..."
+                },
+                style: { backgroundColor: "#f5f5f5" }
+            }
+            eventBus.$emit('addNewNote', note)
+        },
+
+        creatImgNote() {
+            const note = {
+                id: null,
+                type: "note-img",
+                isPinned: false,
+                info: {
+                    url: this.inputVal,
+                    title: "Your Image..."
+                },
+                style: { backgroundColor: "#f5f5f5" }
+            }
+            eventBus.$emit('addNewNote', note)
+        },
+
+        creatYoutubeNote() {
+            const note = {
+                id: null,
+                type: "note-youtube",
+                isPinned: false,
+                info: {
+                    url: this.inputVal,
+                    title: "Your Video..."
+                },
+                style: { backgroundColor: "#f5f5f5" }
+            }
+            eventBus.$emit('addNewNote', note)
+        },
+
+        creatTodosNote() {
+            const note = {
+                id: null,
+        type: "note-todos",
+        isPinned: false,
+        info: {
+            title: this.inputVal,
+            todos: [
+                {
+                    txt: "buy...",
+                    doneAt: null
+                },
+                {
+                    txt: "call...",
+                    doneAt: null
+                }
+            ]
+        },
+        style: { backgroundColor: "#fff475" }
+            }
+            eventBus.$emit('addNewNote', note)
+        },
+
+
 
 
     }

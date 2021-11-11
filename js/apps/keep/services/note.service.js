@@ -102,6 +102,7 @@ export const noteService = {
     remove,
     changeBgColor,
     pinNote,
+    addNewNote
 }
 
 function query() {
@@ -111,6 +112,10 @@ function query() {
         saveToStorage(NOTES_KEY, gNotes);
     }
     return notes;
+}
+
+function addNewNote(note){
+    return storageService.post(NOTES_KEY, note)
 }
 
 // function _createNotes() {

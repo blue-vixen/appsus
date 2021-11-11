@@ -20,7 +20,7 @@ export default {
                 </div>
             </div>
             <button class="edit-send edit-btns"></button>
-            <button class="edit-edit edit-btns"></button>
+            <button class="edit-edit edit-btns" @click="send(note)"></button>
             <button class="edit-delete edit-btns" @click="remove(note.id)"></button>
 
         </div>
@@ -37,6 +37,10 @@ export default {
 
         pinNote(noteId){
             eventBus.$emit('pinNote',noteId)
+        },
+
+        send(note){
+            eventBus.$emit('sendKeep',note) 
         }
     },
 

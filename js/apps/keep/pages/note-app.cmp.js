@@ -1,5 +1,6 @@
 import { noteService } from "../services/note.service.js";
 import { eventBus } from '../../../services/event-bus-service.js'
+import { utilService } from '../../../services/utils-service.js'
 import notePined from '../cmps/note-pined.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 import noteAdd from '../cmps/note-add.cmp.js';
@@ -34,8 +35,19 @@ export default {
         eventBus.$on('colorChanged', this.changeBgColor)
         eventBus.$on('pinNote', this.pinNote)
 
+        eventBus.$on('addNewNote', this.addNewNote)
+
     },
     methods: {
+        addNewNote(note) {
+            note.id = utilService.makeId()
+            console.log(note);
+            noteService.addNewNote(note)
+                .then(() => {
+                    this.notes = noteService.query()
+                })
+        },
+
         removeNote(id) {
             noteService.remove(id)
                 .then(() => {
@@ -50,14 +62,14 @@ export default {
                 })
         },
 
-        pinNote(noteId){
+        pinNote(noteId) {
             noteService.pinNote(noteId)
-            .then(() => {
-                this.notes = noteService.query()
-            })
+                .then(() => {
+                    this.notes = noteService.query()
+                })
         }
     },
-    
+
     computed: {
         pinedToShow() {
             return this.pinedNotes = this.notes.filter(note => note.isPinned)
@@ -71,6 +83,7 @@ export default {
 
     },
     components: {
+        utilService,
         eventBus,
         noteList,
         noteAdd,
