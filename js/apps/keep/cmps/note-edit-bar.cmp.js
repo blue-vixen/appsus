@@ -19,6 +19,7 @@ export default {
                     <div class="color-select color-purple" @click="changeColor(note.id, '#d7aefb')" title="Purple"></div>
                 </div>
             </div>
+            <button class="edit-clone edit-btns" @click="cloneNote(note)"></button>
             <button class="edit-send edit-btns" @click="send(note)"></button>
             <button class="edit-edit edit-btns"></button>
             <button class="edit-delete edit-btns" @click="remove(note.id)"></button>
@@ -37,6 +38,10 @@ export default {
 
         pinNote(noteId) {
             eventBus.$emit('pinNote', noteId)
+        },
+
+        cloneNote(note){
+            eventBus.$emit('addNewNote', note)
         },
 
         send(note) {

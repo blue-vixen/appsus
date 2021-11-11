@@ -22,6 +22,7 @@ color: #292828;
 }
 
 
+
 .edit-pin::before{
     content: '\f08d';
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.150), 1px -1px 0 rgba(0, 0, 0, 0.150), -1px 1px 0 rgba(0, 0, 0, 0.150), 1px 1px 0 rgba(0, 0, 0, 0.50);
@@ -41,6 +42,10 @@ color: #292828;
 
 .edit-delete::before{
     content: '\f2ed';
+}
+
+.edit-clone::before{
+    content: '\f24d';
 }
 
 
