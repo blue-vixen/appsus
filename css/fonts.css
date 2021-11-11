@@ -2,3 +2,8 @@
     font-family: 'fa';
     src: url(./vendor/font-awesome/fonts/fa-solid-900.ttf);
 }
+
+@font-face {
+    font-family: 'far';
+    src: url(./vendor/font-awesome/fonts/fa-regular-400.ttf)
+}

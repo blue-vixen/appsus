@@ -37,6 +37,10 @@ h1,h2,h3,h4,h5,h6,p,ul {
 
 /* header */
 
+.app-footer {
+    display:none;
+}
+
 .app-header, .app-footer {
     height: 5vh;
     padding: 10px;

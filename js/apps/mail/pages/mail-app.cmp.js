@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail.service.js";
+import { eventBus } from '../../../services/event-bus-service.js'
 import mailList from "../cmps/mail-list.cmp.js";
 import mailFolderList from "../cmps/mail-folder-list.cmp.js";
 import mailFilter from "../cmps/mail-filter.cmp.js";
@@ -8,7 +9,7 @@ export default {
     template: `
        <section class="mail-app app-main">
             <div class="side-bar">
-                <h3>Welcome to your mail</h3>
+                <h3>Welcome</h3>
                 <button>Compose</button>
                 <mail-folder-list @filtered="setDisplay"/>
             </div>
@@ -31,14 +32,18 @@ export default {
         }
     },
     created() {
-        // mailService.query(this.criteria)
-        //     .then(emails => {
-        //         console.log(emails)
-        //         this.emails = emails
-        //     })
+        eventBus.$on('remove', this.removeEmail)
 
     },
     methods: {
+        removeEmail(emailId) {
+            mailService.remove(emailId)
+                .then(() => {
+                    this.emails = this.emails.filter(email => email.id !== emailId)
+                })
+
+
+        },
         setDisplay(folder) {
             this.criteria.display = folder;
             console.log(this.criteria)
@@ -74,6 +79,11 @@ export default {
             deep: true,
             immediate: true
         }
+    },
+    components: {
+        mailList,
+        mailFolderList,
+        mailFilter
     }
 
 }

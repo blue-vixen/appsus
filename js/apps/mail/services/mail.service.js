@@ -4,7 +4,8 @@ import { utilService } from "../../../services/utils-service.js";
 export const mailService = {
     query,
     getById,
-    getLoggedUser
+    getLoggedUser,
+    remove
 
 }
 
@@ -45,7 +46,7 @@ const gEmails = [
         isRead: true,
         isStarred: true,
         sentAt: 1636538339420,
-        from: 'Rupaul@wowproductions.com'
+        from: 'RuPaul@wowproductions.com'
     },
     {
         id: utilService.makeId(),
@@ -57,11 +58,28 @@ const gEmails = [
         sentAt: 1636538339420,
         from: 'laganjaestranja@hausofedwards.com'
     },
+    {
+        id: utilService.makeId(),
+        status: 'sent',
+        subject: 'You are the king!',
+        body: 'but please stop puking on the bus!',
+        isRead: false,
+        isStarred: false,
+        sentAt: 1636538339420,
+        to: 'anerbitton@awesomebittons.com'
+    },
 ]
 
 function getLoggedUser() {
     return loggedinUser
 }
+
+function remove(emailId) {
+    console.log(emailId)
+    // return Promise.reject('Big balagan!')
+    return storageService.remove(MAIL_KEY, emailId);
+}
+
 
 function query(criteria) {
     let emails = storageService.query(MAIL_KEY)

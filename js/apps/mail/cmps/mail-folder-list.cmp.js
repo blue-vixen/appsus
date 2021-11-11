@@ -2,10 +2,10 @@ export default {
     name: 'folder-list',
     template: `
         <ul class="folders clean-list">
-            <li @click="setFolder('inbox')">Inbox</li>
-            <li @click="setFolder('sent')"> Sent</li>
-            <li @click="setFolder('drafts')">Drafts</li>
-            <li @click="setFolder('trash')">Trash</li>
+            <li class="inbox-folder" @click="setFolder('inbox')">Inbox</li>
+            <li class="sent-folder" @click="setFolder('sent')"> Sent</li>
+            <li class="draft-folder" @click="setFolder('drafts')">Drafts</li>
+            <li class="trash-folder" @click="setFolder('trash')">Trash</li>
         </ul>
 `,
     data() {
