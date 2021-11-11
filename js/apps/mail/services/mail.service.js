@@ -35,7 +35,7 @@ const gEmails = [
         body: 'How the heck are ya?',
         isRead: false,
         isStarred: false,
-        sentAt: 1636538339420,
+        sentAt: 1636619401881,
         from: 'YekaterinaZamolodchikova@dragqueen.com'
     },
     {
@@ -43,7 +43,7 @@ const gEmails = [
         status: 'inbox',
         subject: 'Come judge for us!',
         body: 'Dear Adi&Kobi, we would be honored if you would consider judging in the next season of Drag Race. Love, RuPaul',
-        isRead: true,
+        isRead: false,
         isStarred: true,
         sentAt: 1636538339420,
         from: 'RuPaul@wowproductions.com'
@@ -67,6 +67,16 @@ const gEmails = [
         isStarred: false,
         sentAt: 1636538339420,
         to: 'anerbitton@awesomebittons.com'
+    },
+    {
+        id: utilService.makeId(),
+        status: 'inbox',
+        subject: 'Duh for short',
+        body: 'Miss Creme if you\'re nasty',
+        isRead: false,
+        isStarred: false,
+        sentAt: Date.now(),
+        from: 'bendelacreme@terminallydelightful.com'
     },
 ]
 

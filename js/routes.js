@@ -2,6 +2,7 @@ import appHome from './pages/app-home.cmp.js'
 import appsPage from './pages/app-home.cmp.js'
 import keepApp from './apps/keep/pages/note-app.cmp.js'
 import mailApp from './apps/mail/pages/mail-app.cmp.js'
+import mailDetails from './apps/mail/pages/mail-details.cmp.js'
 // import bookDetails from './pages/book-details.cmp.js'
 // import bookAdd from './pages/book-add.cmp.js'
 
@@ -16,16 +17,6 @@ const routes = [
     {
         path: '/apps',
         component: appsPage,
-        // children: [
-        //     {
-        //         path: 'keep',
-        //         component: keepApp
-        //     },
-        // {
-        //     path: 'mail',
-        //     component: mailApp
-        // }
-        // ]
     },
     {
         path: '/apps/keep',
@@ -34,7 +25,16 @@ const routes = [
     {
         path: '/apps/mail',
         component: mailApp
-    }
+    },
+
+    {
+        path: '/mail/:mailId',
+        component: mailDetails
+    },
+    // {
+    //     path: '/addbook',
+    //     component: bookAdd
+    // }
     // {
     //     path: '/about',
     //     component: aboutPage,
@@ -50,15 +50,6 @@ const routes = [
     //     ]
 
     // },
-
-    // {
-    //     path: '/book/:bookId',
-    //     component: bookDetails
-    // },
-    // {
-    //     path: '/addbook',
-    //     component: bookAdd
-    // }
 ];
 
 export const router = new VueRouter({ routes });
