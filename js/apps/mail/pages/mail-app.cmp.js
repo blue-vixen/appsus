@@ -3,6 +3,7 @@ import { eventBus } from '../../../services/event-bus-service.js'
 import mailList from "../cmps/mail-list.cmp.js";
 import mailFolderList from "../cmps/mail-folder-list.cmp.js";
 import mailFilter from "../cmps/mail-filter.cmp.js";
+import mailExpand from "../cmps/mail-expand.cmp.js";
 
 export default {
 
@@ -15,7 +16,8 @@ export default {
             </div>
             <div class="flex main-mail-display">
                 <mail-filter @filtered="setFilter"/>
-                <mail-list :emails="emails"/>
+                <mail-list :emails="emails" @selected="selectEmail"/>
+                
             </div>
         </section>
     
@@ -28,7 +30,8 @@ export default {
                 display: 'inbox',
                 isRead: null,
                 isStarred: null
-            }
+            },
+            selectedEmail: null
         }
     },
     created() {
@@ -36,13 +39,15 @@ export default {
 
     },
     methods: {
+        selectEmail(email) {
+            this.selectedEmail = email
+            console.log(this.selectedEmail)
+        },
         removeEmail(emailId) {
             mailService.remove(emailId)
                 .then(() => {
                     this.emails = this.emails.filter(email => email.id !== emailId)
                 })
-
-
         },
         setDisplay(folder) {
             this.criteria.display = folder;
@@ -57,9 +62,7 @@ export default {
         }
     },
     computed: {
-        emailsToShow() {
-            return this.emails
-        }
+
     },
     components: {
         mailList,
@@ -83,7 +86,8 @@ export default {
     components: {
         mailList,
         mailFolderList,
-        mailFilter
+        mailFilter,
+        mailExpand
     }
 
 }

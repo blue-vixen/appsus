@@ -11,9 +11,14 @@
     margin: 5px;
 }
 
+.side-bar {
+    margin-inline-end: 20px;
+}
+
 .folders li {
-    padding: 5px;    
+    padding: 10px;    
     color: rgb(100, 99, 99);
+    font-size: 1.25rem;
 }
 
 .folders li::before {
@@ -46,7 +51,7 @@
     max-width: 85%;
 }
 
-.actions {
+.mail-preview .actions {
     display:none;
 }
 
@@ -60,7 +65,7 @@
     margin-top: 2px;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 2fr 8fr 1fr 2fr;
+    grid-template-columns: 3fr 8fr 2fr 2fr;
     grid-template-rows: 1fr;
 }
 
@@ -104,7 +109,7 @@
 }
 
 .btn-expand::before {
-    content: '\f658'
+    content: '\f065'
 }
 .btn-note::before {
     content: '\f1d8'
@@ -118,4 +123,46 @@
 
 .unread .bold {
     font-weight: bold;
+}
+
+
+/* mail expand */
+
+.mail-expand {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    background-color: whitesmoke;
+}
+
+.mail-expand > * {
+    padding: 10px;
+}
+
+
+/* mail details */
+
+.mail-details {
+    width: 90%;
+    flex-direction: column;
+    margin: 2rem;   
+    position: relative;  
+    background-color: whitesmoke;  
+}
+
+.mail-details > * {
+    padding: 20px 20px;
+}
+
+.mail-details .actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 20px;
+
+}
+
+.mail-details .actions button {
+    font-size: 1.5em;
+
 }
