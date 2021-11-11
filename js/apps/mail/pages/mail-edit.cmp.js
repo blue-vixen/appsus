@@ -5,11 +5,15 @@ export default {
     name: 'mail-edit',
     template: `
         <section class="mail-edit app-main">
+            <h3>New message</h3>
             <form @submit.prevent="save">
                 <input v-model="emailToEdit.to" type="email" placeholder="To:" autofocus required>
                 <input v-model="emailToEdit.subject" type="text" placeholder="Subject:" required>
-                <textarea v-model="emailToEdit.body" rows="4" cols="50"></textarea>
-                <button>Send</button>
+                <textarea v-model="emailToEdit.body"></textarea>
+                <div class="form-btns flex space-between">
+                    <button class="send-btn" type="submit" title="Send"></button>
+                    <button class="cancel-btn" title="Cancel" @click="cancel"></button>
+                </div>
             </form>
         </section>
     `,
@@ -35,6 +39,9 @@ export default {
                     eventBus.$emit('updated', email)
                     this.$router.push({ path: '/apps/mail' })
                 })
+        },
+        cancel() {
+            this.$router.push({ path: '/apps/mail' })
         }
     },
     watch: {

@@ -1,6 +1,4 @@
-.mail-edit textarea {
-    resize: none;
-}
+
 
 .mail-app {
     display: flex;
@@ -86,7 +84,7 @@
 }
 
 
-.btn-back, .actions button, .folders li::before {
+.form-btns button, .btn-back, .actions button, .folders li::before {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -180,4 +178,45 @@
 .btn-back::before {
     font-family: fa;
     content: '\f060';
+}
+
+/* mail edit */
+
+.mail-edit {
+    margin: 2rem;
+}
+
+.mail-edit textarea {
+    resize: none;
+    flex-grow:1;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.mail-edit form {
+    display: flex;
+    flex-direction: column;    
+    height: 90%;
+    border: 1px solid rgb(160, 160, 160);
+    font-size: 1.5rem;
+}
+
+
+.mail-edit input, .mail-edit textarea {
+    border: none;
+    box-shadow: 0 1px 1px rgb(160, 160, 160);
+    margin: 1px;
+    padding: 10px;
+}
+
+.form-btns button {
+    font-size: 3rem;
+}
+
+.send-btn::before {
+    content: '\f138';
+}
+
+.cancel-btn::before {
+    content: '\f1f8';
 }

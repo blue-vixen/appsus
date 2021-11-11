@@ -7,7 +7,7 @@ export default {
     props: ['email', 'selectedEmail'],
     template: `
 
-        <ul class="mail-preview clean-list" :class="markRead">
+        <ul class="mail-preview clean-list" :class="markRead" @click="updateRead(email)">
             <!-- <li class="star"></li> -->
             <li class="bold">{{email.to || email.from}}</li>
             <li><span class="bold">{{email.subject}} -</span> {{email.body}}</li>
@@ -26,8 +26,11 @@ export default {
         }
     },
     created() {
-        if (this.email.isRead === false && this.email.status === 'inbox') this.$emit('updateCount')
+        // if (this.email.isRead === false && this.email.status === 'inbox') this.$emit('updateCount', 1)
 
+    },
+    destroyed() {
+        // if (this.email.isRead === false && this.email.status === 'inbox') this.$emit('updateCount', -1)
     },
     methods: {
         remove(emailId) {
@@ -35,6 +38,9 @@ export default {
         },
         redirectToMail(emailId) {
             this.$router.push({ path: '/mail/' + emailId })
+        },
+        updateRead(email) {
+            mailService.markRead(email)
         }
     },
     computed: {

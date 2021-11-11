@@ -42,12 +42,11 @@ h1,h2,h3,h4,h5,h6,p,ul {
     height: 5vh;
     padding: 10px;
     background-color: lightsteelblue;
-}
-
-.app-header {
+    align-items: center;
     display: flex;
     justify-content: space-between;
 }
+
 
 /* footer */
 

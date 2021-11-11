@@ -6,7 +6,8 @@ export const mailService = {
     getById,
     getLoggedUser,
     remove,
-    save
+    save,
+    markRead
 
 }
 
@@ -24,7 +25,7 @@ const gEmails = [
         status: 'sent',
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
-        isRead: false,
+        isRead: true,
         isStarred: false,
         sentAt: 1551133930594,
         to: 'momo@momo.com'
@@ -34,7 +35,7 @@ const gEmails = [
         status: 'inbox',
         subject: 'Your dad just calls me Katya',
         body: 'How the heck are ya?',
-        isRead: false,
+        isRead: true,
         isStarred: false,
         sentAt: 1636619401881,
         from: 'YekaterinaZamolodchikova@dragqueen.com'
@@ -64,7 +65,7 @@ const gEmails = [
         status: 'sent',
         subject: 'You are the king!',
         body: 'but please stop puking on the bus!',
-        isRead: false,
+        isRead: true,
         isStarred: false,
         sentAt: 1636538339420,
         to: 'anerbitton@awesomebittons.com'
@@ -128,6 +129,11 @@ function query(criteria) {
 
 function getById(emailId) {
     return storageService.get(MAIL_KEY, emailId)
+}
+
+function markRead(email) {
+    email.isRead = true;
+    return storageService.put(MAIL_KEY, email)
 }
 
 function saveToStorage(key, value) {
