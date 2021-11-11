@@ -12,7 +12,28 @@
 }
 
 .folders li {
-    padding: 2px;
+    padding: 5px;    
+    color: rgb(100, 99, 99);
+}
+
+.folders li::before {
+    margin: 5px;
+}
+
+.inbox-folder::before {
+    content: '\f01c';
+}
+
+.sent-folder::before{
+    content: '\f14d';
+}
+
+.draft-folder::before {
+    content: '\f15b'
+}
+
+.trash-folder::before{
+    content: '\f1f8';
 }
 
 .folders li:hover{
@@ -25,13 +46,21 @@
     max-width: 85%;
 }
 
+.actions {
+    display:none;
+}
+
+.mail-preview:hover .actions{
+    display: block;
+}
+
 .mail-preview {
     box-shadow: 0 1px 1px rgb(160, 160, 160);
     flex-wrap: nowrap;
     margin-top: 2px;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 2fr 8fr 2fr;
+    grid-template-columns: 1fr 2fr 8fr 1fr 2fr;
     grid-template-rows: 1fr;
 }
 
@@ -48,13 +77,17 @@
 }
 
 
-.actions button {
+.actions button, .folders li::before {
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-family: fa;
     font-size: 1rem;
-    color: rgb(160, 160, 160)
+    color: rgb(160, 160, 160);
+}
+
+.actions button:hover {
+    color: rgb(124, 123, 123);
 }
 
 .read {
@@ -64,6 +97,7 @@
 .unread {
     background-color: white;
 }
+
 
 .btn-delete::before {
     content: '\f1f8';
@@ -77,15 +111,11 @@
 }
 
 .star::before{
-    font-family: fa;
+    font-family: far;
     font-style: normal;
     content: '\f005'
 }
 
 .unread .bold {
     font-weight: bold;
-}
-
-.star {
-    font-weight: regular;
 }

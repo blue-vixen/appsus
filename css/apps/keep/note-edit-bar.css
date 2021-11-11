@@ -41,14 +41,15 @@
 
 /* ------color-plette-------- */
 
-.edit-color-section{
+/* .edit-color-section{
     position: relative;
-}
+} */
 
 .color-plette{
     position: absolute;
     display:none;
-    gap: 5px;
+    /* gap: 5px; */
+    /* padding:5px 10px 10px; */
 }
 
 .edit-color-section:hover .color-plette{

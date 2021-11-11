@@ -12,10 +12,12 @@
 }
 
 .note-preview{
+    vertical-align: baseline;
+    break-inside: avoid;
     background-color: whitesmoke;
     width: 200px;
     min-height: 150px;
-    margin: 20px;
+    margin: 0 16px 16px 0;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -24,10 +26,15 @@
 
 
 .note-list{
-    display: flex;
+    vertical-align: baseline;
+    margin-top: 20px;
+    margin-bottom: 2em;
+    column-count: 4;
+    column-gap: 0.25em;
+    /* display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    align-content: center;
+    align-content: center; */
     padding-inline-start: 0px;
     
 }
