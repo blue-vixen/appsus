@@ -26,35 +26,36 @@ export default {
         </div>
     `,
 
-    methods:{
-        remove(noteId){
+    methods: {
+        remove(noteId) {
             eventBus.$emit('remove', noteId)
         },
 
-        changeColor(noteId, color){
-            eventBus.$emit('colorChanged',noteId, color)
+        changeColor(noteId, color) {
+            eventBus.$emit('colorChanged', noteId, color)
         },
 
-        pinNote(noteId){
-            eventBus.$emit('pinNote',noteId)
+        pinNote(noteId) {
+            eventBus.$emit('pinNote', noteId)
         },
 
-        send(note){
-            eventBus.$emit('sendKeep',note) 
+        send(note) {
+            console.log(note)
+            this.$router.push({ path: `/mail/compose?subject=${note.info.title}` })
         }
     },
 
-    computed:{
-        pinnedNoteStyle(){
+    computed: {
+        pinnedNoteStyle() {
             if (this.note.isPinned)
-            return '#ffa500'
+                return '#ffa500'
         }
     },
     components: {
         eventBus,
     },
 
-    
+
 
 
 
