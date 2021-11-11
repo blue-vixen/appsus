@@ -16,6 +16,7 @@ export default {
         }
     },
     created() {
+        this.unreadCount = 0;
         eventBus.$on('updateCount', this.updateCount)
     },
     methods: {

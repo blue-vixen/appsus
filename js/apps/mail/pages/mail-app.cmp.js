@@ -11,7 +11,7 @@ export default {
        <section class="mail-app app-main">
             <div class="side-bar">
                 <h3>Welcome</h3>
-                <button>Compose</button>
+                <button @click="composeNew">Compose</button>
                 <mail-folder-list @filtered="setDisplay"/>
             </div>
             <div class="flex main-mail-display">
@@ -36,9 +36,13 @@ export default {
     },
     created() {
         eventBus.$on('remove', this.removeEmail)
+        eventBus.$on('updated', this.update)
 
     },
     methods: {
+        composeNew() {
+            this.$router.push({ path: '/mail/compose' })
+        },
         selectEmail(email) {
             this.selectedEmail = email
             console.log(this.selectedEmail)
@@ -51,7 +55,6 @@ export default {
         },
         setDisplay(folder) {
             this.criteria.display = folder;
-            console.log(this.criteria)
         },
         setFilter(filterBy) {
             const { msgStatus, txt } = filterBy
@@ -59,7 +62,15 @@ export default {
             else if (msgStatus === 'Unread') this.criteria.isRead = false
             else this.criteria.isRead = null
             this.criteria.txt = txt
+        },
+        update() {
+            mailService.query(this.criteria)
+                .then(emails => {
+                    console.log(emails)
+                    this.emails = emails
+                })
         }
+
     },
     computed: {
 

@@ -3,8 +3,7 @@ import appsPage from './pages/app-home.cmp.js'
 import keepApp from './apps/keep/pages/note-app.cmp.js'
 import mailApp from './apps/mail/pages/mail-app.cmp.js'
 import mailDetails from './apps/mail/pages/mail-details.cmp.js'
-// import bookDetails from './pages/book-details.cmp.js'
-// import bookAdd from './pages/book-add.cmp.js'
+import mailEdit from './apps/mail/pages/mail-edit.cmp.js'
 
 
 
@@ -27,6 +26,10 @@ const routes = [
         component: mailApp
     },
 
+    {
+        path: '/mail/compose',
+        component: mailEdit
+    },
     {
         path: '/mail/:mailId',
         component: mailDetails
