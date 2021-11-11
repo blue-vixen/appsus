@@ -39,27 +39,34 @@
 
 
 
-/* ------color-plette-------- */
+/* ------color-palette-------- */
 
 .edit-color-section{
     position: relative;
 }
 
-.color-plette{
+.color-palette{
     position: absolute;
     display:none;
+    left: -100px;
+    padding: 5px;
     gap: 5px;
 }
 
-.edit-color-section:hover .color-plette{
+.edit-color-section:hover .color-palette{
     display:flex;
 }
 
-.color-plette .color-select{
+.color-palette .color-select{
     height: 20px;
     width: 20px;
-   border: 1px solid rgb(221, 219, 219);
    border-radius: 50%;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.color-white{
+    background-color: #ffffff;
 }
 
 .color-red{
@@ -68,4 +75,24 @@
 
 .color-orange{
     background-color: #fbbc04;
+}
+
+.color-yellow{
+    background-color: #fff475;
+}
+
+.color-green{
+    background-color: #ccff90;
+}
+
+.color-skyblue{
+    background-color: #cbf0f8;
+}
+
+.color-blue{
+    background-color: #aecbfa;
+}
+
+.color-purple{
+    background-color: #d7aefb;
 }

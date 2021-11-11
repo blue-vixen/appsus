@@ -11,8 +11,28 @@
     padding: 10px;
 }
 
+.note-list{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    width: 100%;
+    
+    /* column-gap: .25em;
+    
+    margin-top: 25px;
+    vertical-align: baseline; */
+
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-auto-flow:row dense; */
+}
+
 .note-preview{
-    background-color: whitesmoke;
+    background-color: #ffffff;
     width: 200px;
     min-height: 150px;
     margin: 20px;
@@ -22,29 +42,16 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-
-.note-list{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: center;
-    padding-inline-start: 0px;
-    
-}
-
-
 .note-details{
     padding: 10px;
 }
-
-
-
 
 /* note-img */
 
 .note-img img{
 width: 184px;
 border-radius: 3px;
+
 }
 
 
