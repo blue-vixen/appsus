@@ -11,13 +11,19 @@
 
 .note-type-btns{
     display: flex;
+    color: rgb(100, 99, 99);
 }
 
 .note-type-btns > *{
     font-family: fa;
+    color: rgb(100, 99, 99);
     font-size: 1.5rem;
     background-color: transparent;
     border: none;
+}
+
+.add-youtube{
+    font-family: fab;
 }
 
 .txt-input{
@@ -27,18 +33,18 @@
 }
 
 .add-txt::before{
-    content: '\f08d';
+    content: '\f303';
 }
 
 .add-img::before{
-    content: '\f53f';
+    content: '\f03e';
 }
 
 .add-youtube::before{
-    content: '\f1d8';
+    content: '\f167';
 }
 
 .add-todos::before{
-    content: '\f044';
+    content: '\f0ca';
 }
 

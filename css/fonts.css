@@ -7,3 +7,8 @@
     font-family: 'far';
     src: url(./vendor/font-awesome/fonts/fa-regular-400.ttf)
 }
+
+@font-face {
+    font-family: 'fab';
+    src: url(./vendor/font-awesome/webfonts/fa-brands-400.ttf)
+}

@@ -5,15 +5,18 @@ import noteEditBar from './note-edit-bar.cmp.js';
 export default {
     props: ['note'],
     template: `
-        <div class="note-preview">
+        <div class="note-preview" :style="{ backgroundColor: noteBgColor }">
             <note-details :note="note"/>
-            <note-edit-bar :note="note" @remove="remove"/>
+            <note-edit-bar :note="note"/>
         </div>
     `,
 
 methods:{
-    remove(noteId){
-        this.$emit('remove', noteId)
+
+},
+computed: {
+    noteBgColor() {
+        return this.note.style.backgroundColor
     }
 },
 

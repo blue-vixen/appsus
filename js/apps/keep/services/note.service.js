@@ -6,33 +6,37 @@ const gNotes = [
     {
         id: "n101",
         type: "note-txt",
-        isPinned: true,
+        isPinned: false,
         info: {
             txt: "Fullstack Me Baby!"
-        }
+        },
+        style: { backgroundColor: "#aecbfa" }
     },
     {
         id: "n102",
         type: "note-img",
+        isPinned: false,
         info: {
             url: "https://i.pinimg.com/236x/56/e8/71/56e8715f113c1244257bff1e45e539f6--rupaul-drag-drag-race.jpg",
             title: " Yekaterina Lobaznyuk"
         },
-        style: { backgroundColor: "#00d" }
+        style: { backgroundColor: "#f5f5f5" }
     },
     {
         id: "n103",
         type: "note-img",
+        isPinned: false,
         info: {
             url: "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/2020BenDeLaCreme-Earnest-1585074372.jpg",
             title: "BenDeLaCreme"
         },
-        style: { backgroundColor: "#00d" }
+        style: { backgroundColor: "#f28b82" }
     },
-    
+
     {
         id: "n104",
         type: "note-todos",
+        isPinned: false,
         info: {
             label: "Get my stuff together",
             todos: [
@@ -45,30 +49,34 @@ const gNotes = [
                     doneAt: 187111111
                 }
             ]
-        }
+        },
+        style: { backgroundColor: "#cbf0f8" }
     },
     {
         id: "n105",
         type: "note-img",
+        isPinned: true,
         info: {
             url: "https://dynamicmedia.livenationinternational.com/Media/n/a/c/5f9eeadd-cc3d-45aa-80dd-905ea5c3dd75.jpg",
             title: "Trixie Mattel"
         },
-        style: { backgroundColor: "#00d" }
+        style: { backgroundColor: "#ccff90" }
     },
     {
         id: "n106",
         type: "note-img",
+        isPinned: false,
         info: {
             url: "https://img.wcdn.co.il/f_auto,q_auto,w_1200,t_54/2/7/2/1/2721521-46.jpg",
             title: "Alaska Thunderfuck"
         },
-        style: { backgroundColor: "#00d" }
+        style: { backgroundColor: "#ffa07a" }
     },
-    
+
     {
         id: "n107",
         type: "note-todos",
+        isPinned: true,
         info: {
             label: "Get my stuff together",
             todos: [
@@ -81,7 +89,8 @@ const gNotes = [
                     doneAt: 187111111
                 }
             ]
-        }
+        },
+        style: { backgroundColor: "#fff475" }
     },
 ];
 
@@ -90,6 +99,8 @@ export const noteService = {
     getById,
     makeId,
     remove,
+    changeBgColor,
+    pinNote,
 }
 
 function query() {
@@ -104,6 +115,22 @@ function _createNotes() {
         saveToStorage(NOTES_KEY, gNotes);
     }
     return notes;
+}
+
+function changeBgColor(noteId, color) {
+    return getById(noteId)
+        .then(note => {
+            note.style.backgroundColor = color
+            storageService.put(NOTES_KEY, note)
+        });
+}
+
+function pinNote(noteId){
+    return getById(noteId)
+    .then(note => {
+        note.isPinned = !note.isPinned
+        storageService.put(NOTES_KEY, note)
+    });
 }
 
 function getById(noteId) {

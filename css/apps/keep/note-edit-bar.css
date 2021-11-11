@@ -13,12 +13,18 @@
     padding: 10px 0px;
     font-family: fa;
     font-size: 1rem;
+    color: rgb(100, 99, 99);
+
 }
 
+.note-edit-bar .edit-btns:hover{
+color: #292828;
+}
 
 
 .edit-pin::before{
     content: '\f08d';
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.150), 1px -1px 0 rgba(0, 0, 0, 0.150), -1px 1px 0 rgba(0, 0, 0, 0.150), 1px 1px 0 rgba(0, 0, 0, 0.50);
 }
 
 .edit-color::before{
@@ -41,9 +47,9 @@
 
 /* ------color-palette-------- */
 
-/* .edit-color-section{
+.edit-color-section{
     position: relative;
-} */
+}
 
 .color-palette{
     position: absolute;
@@ -74,7 +80,7 @@
 }
 
 .color-orange{
-    background-color: #fbbc04;
+    background-color: #ffa07a;
 }
 
 .color-yellow{

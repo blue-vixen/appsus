@@ -1,4 +1,6 @@
 import { noteService } from "../services/note.service.js";
+import { eventBus } from '../../../services/event-bus-service.js'
+import notePined from '../cmps/note-pined.cmp.js';
 import noteList from '../cmps/note-list.cmp.js';
 import noteAdd from '../cmps/note-add.cmp.js';
 
@@ -11,22 +13,27 @@ export default {
     template: `
         <section class="note-app app-main">
             <h2>Let's KEEP it simple...</h2>
-            <!-- <note-filter /> -->
             <note-add/>
-            <note-list :notes="notesToShow"  @remove="removeNote" v-if="!selectedNote"/>
-            <!-- <book-details v-if="selectedBook" :book="selectedBook" @close="closeDetails"/> -->
+            <note-pined :notes="pinedToShow"/>
+            <div class="line-bar"></div>
+            <note-list :notes="unPinedToShow" v-if="!selectedNote"/>
         </section>
     `,
     data() {
         return {
             notes: null,
+            pinedNotes: null,
+            unPinedNotes: null,
             selectedNote: null,
             filterBy: null
         }
     },
     created() {
         this.notes = noteService.query()
-        console.log(this.notes);
+        eventBus.$on('remove', this.removeNote)
+        eventBus.$on('colorChanged', this.changeBgColor)
+        eventBus.$on('pinNote', this.pinNote)
+
     },
     methods: {
         removeNote(id) {
@@ -49,40 +56,35 @@ export default {
                 });
         },
 
+        changeBgColor(noteId, color) {
+            noteService.changeBgColor(noteId, color)
+                .then(() => {
+                    this.notes = noteService.query()
+                })
+        },
 
-
-        // selectBook(book) {
-        //     this.selectedBook = book;
-        // },
-        // closeDetails() {
-        //     this.selectedBook = null;
-        // },
-        // setFilter(filterBy) {
-        //     this.filterBy = filterBy;
-        // }
+        pinNote(noteId){
+            noteService.pinNote(noteId)
+            .then(() => {
+                this.notes = noteService.query()
+            })
+        }
     },
     computed: {
-       notesToShow() {
-           return this.notes
-            // if (!this.filterBy) return this.books;
-            // const minPrice = +this.filterBy.fromPrice;
-            // const maxPrice = +this.filterBy.toPrice;
-            // const searchStr = this.filterBy.title.toLowerCase();
-            // return this.books.filter(book => { return book.title.toLowerCase().includes(searchStr) })
-            //     .filter(book => {
-            //         if (minPrice === 0 && maxPrice === 0) return true
-            //         return book.listPrice.amount > minPrice && book.listPrice.amount < maxPrice || !maxPrice
-            //     })
-
-        }
+        pinedToShow() {
+            return this.pinedNotes = this.notes.filter(note => note.isPinned)
+        },
+        unPinedToShow() {
+            return this.unPinedNotes = this.notes.filter(note => !note.isPinned)
+        },
     },
     watch: {
 
     },
     components: {
+        eventBus,
         noteList,
         noteAdd,
-        // noteFilter,
-        // noteDetails
+        notePined
     }
 }
