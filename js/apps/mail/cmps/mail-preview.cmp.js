@@ -26,7 +26,7 @@ export default {
         }
     },
     created() {
-        if (this.email.isRead === false) this.$emit('updateCount')
+        if (this.email.isRead === false && this.email.status === 'inbox') this.$emit('updateCount')
 
     },
     methods: {

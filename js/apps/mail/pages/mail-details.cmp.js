@@ -14,7 +14,9 @@ export default {
         <div class="expand-line flex space-between">
             <h4>Subject: {{email.subject}}</h4>
         </div>
-        <p>{{email.body}}</p>    
+        <p>{{email.body}}</p>
+        <button title="Go back" class="btn-back" @click="redirectToList"></button>
+        
     </div>
     <div v-else>Loading...</div>
     `,
@@ -23,12 +25,21 @@ export default {
             email: null,
         }
     },
+    methods: {
+        redirectToList() {
+            this.$router.push({ path: '/apps/mail' })
+        }
+    },
     computed: {
         renderDate() {
             var result = "";
             var d = new Date(this.email.sentAt)
-            result += d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +
-                " " + d.getHours() + ":" + d.getMinutes()
+            result += d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + ' ' +
+                d.toLocaleString('en-US', {
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: true,
+                })
             return result;
         }
     },

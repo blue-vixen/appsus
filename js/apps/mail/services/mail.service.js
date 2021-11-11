@@ -5,7 +5,8 @@ export const mailService = {
     query,
     getById,
     getLoggedUser,
-    remove
+    remove,
+    save
 
 }
 
@@ -90,24 +91,34 @@ function remove(emailId) {
     return storageService.remove(MAIL_KEY, emailId);
 }
 
+function save(newMail) {
+    newMail.id = utilService.makeId();
+    newMail.sentAt = Date.now();
+    console.log(newMail)
+    gEmails.push(newMail)
+    return storageService.post(MAIL_KEY, newMail)
+}
 
-function query(criteria) {
-    let emails = storageService.query(MAIL_KEY)
+
+function _createMails() {
+    let emails = loadFromStorage(MAIL_KEY);
     if (!emails || !emails.length) {
         emails = gEmails;
-        storageService.save(MAIL_KEY, emails)
+        saveToStorage(MAIL_KEY, emails);
     }
+    return emails;
+}
+
+function query(criteria) {
+    let emails = _createMails()
     const { display, isRead, txt, isStarred } = criteria
-    // strs = txt.toLowerCase().split(' ')
-    // console.log(strs)
     let filteredMails = emails.filter(email => {
         return email.status === display
     }).filter(email => {
         if (isRead === null) return true
         else return (isRead === email.isRead)
     }).filter(email => {
-        // const txts = [email.body.toLowerCase(), email.subject.toLowerCase()]
-        // console.log(txts)
+
         return email.body.toLowerCase().includes(txt) || email.subject.toLowerCase().includes(txt)
     })
     console.log(filteredMails)
@@ -117,4 +128,13 @@ function query(criteria) {
 
 function getById(emailId) {
     return storageService.get(MAIL_KEY, emailId)
+}
+
+function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value) || null);
+}
+
+function loadFromStorage(key) {
+    let data = localStorage.getItem(key);
+    return (data) ? JSON.parse(data) : undefined;
 }
