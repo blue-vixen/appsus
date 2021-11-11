@@ -19,8 +19,8 @@ export default {
                     <div class="color-select color-purple" @click="changeColor(note.id, '#d7aefb')" title="Purple"></div>
                 </div>
             </div>
-            <button class="edit-send edit-btns"></button>
-            <button class="edit-edit edit-btns" @click="send(note)"></button>
+            <button class="edit-send edit-btns" @click="send(note)"></button>
+            <button class="edit-edit edit-btns"></button>
             <button class="edit-delete edit-btns" @click="remove(note.id)"></button>
 
         </div>
