@@ -32,21 +32,89 @@ h1,h2,h3,h4,h5,h6,p,ul {
 .app-main {
     /* flex-grow: 1; */
     height: 100%;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 /* header */
 
 
 .app-header, .app-footer {
-    height: 5vh;
+    /* height: 5vh; */
     padding: 10px;
-    background-color: lightsteelblue;
+    background-color: white;
     align-items: center;
     display: flex;
     justify-content: space-between;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.logo img {
+    width: 150px;
+}
 
 /* footer */
 
+.home-page {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    flex-direction: column;
+}
+
+.welcome h1 {
+    font-size: 2rem;
+}
+
+.welcome {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+    background-image: url(/imgs/1.png);
+    /* background-size: contain; */
+    background-position: center;
+    background-repeat: no-repeat;    
+    color: #222222
+}
+.home-page-links {
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+}
+.welcome a {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 1.5rem;
+    color:lightslategray;
+    background-color: whitesmoke;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 0.4em;
+    display: block;
+}
+
+.welcome a:hover {
+    color: #222222;
+}
+
+.welcome a::before {
+    font-family: fa;
+    margin-inline-end: 4px;
+}
+
+.welcome a:last-child::before {    
+    content: '\f02d';
+    
+}
+
+.welcome a:nth-child(2)::before {
+    content: '\f0e0';
+}
+
+.welcome a:first-child::before {
+    content: '\f08d';
+}

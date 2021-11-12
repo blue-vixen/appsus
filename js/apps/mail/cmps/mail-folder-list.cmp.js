@@ -12,11 +12,10 @@ export default {
 `,
     data() {
         return {
-            unreadCount: 0
+            unreadCount: null
         }
     },
     created() {
-        this.unreadCount = 0;
         eventBus.$on('updateCount', this.updateCount)
     },
     methods: {

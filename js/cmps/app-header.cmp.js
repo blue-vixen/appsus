@@ -2,7 +2,7 @@ export default {
     template: `
         <header class="app-header">
             <div class="logo">
-                <h3>Appsus ftw</h3>
+                <img src="./imgs/Appsus1.png">
             </div>
             <nav>
                 <router-link to="/">Home</router-link> |

@@ -40,13 +40,13 @@ export default {
             eventBus.$emit('pinNote', noteId)
         },
 
-        cloneNote(note){
+        cloneNote(note) {
             eventBus.$emit('addNewNote', note)
         },
 
         send(note) {
             console.log(note)
-            this.$router.push({ path: `/mail/compose?subject=${note.info.title}` })
+            this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}` })
         }
     },
 

@@ -9,8 +9,16 @@ export default {
                     <option>All</option>
                     <option>Read</option>
                     <option>Unread</option>
-                    <option>Starred</option>
+                    <!-- <option>Starred</option> -->
                 </select>
+                
+            </label>
+            <label>Sort by:
+            <select @change="sort" v-model="sortBy">
+                <option>Date</option>
+                <option>Sender</option>
+                <option>Subject</option>
+            </select>
             </label>
         </section>
 `,
@@ -19,12 +27,16 @@ export default {
             filterBy: {
                 txt: '',
                 msgStatus: 'All'
-            }
+            },
+            sortBy: 'Date'
         }
     },
     methods: {
         filter() {
             this.$emit('filtered', { ...this.filterBy });
+        },
+        sort() {
+            this.$emit('sorted', this.sortBy)
         }
     }
 }

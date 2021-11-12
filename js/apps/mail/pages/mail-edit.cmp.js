@@ -48,7 +48,6 @@ export default {
         '$route': {
             handler() {
                 this.emailToEdit.subject = this.$route.query.subject
-                console.log(this.emailToEdit)
             },
             immediate: true
         }

@@ -25,13 +25,11 @@ export default {
 
     },
     methods: {
-        // updateCount(num) {
-        //     this.unreadCount += num;
-        // },
+
         select(email) {
             if (this.selectedEmail === email) this.selectedEmail = null
             else this.selectedEmail = email
-            // if (this.selectedEmail && this.selectedEmail.isRead === false) mailService.markRead(this.selectedEmail.id)
+
         },
 
     },
