@@ -249,6 +249,11 @@
     display: none;
 }
 
+.btn-menu::before {
+    font-family: fa;
+    content:'\f0c9'
+}
+
 /* mobile */
 
 @media (max-width: 860px) {
@@ -282,9 +287,12 @@
 
     .btn-menu {
         display: block;
+        background-color: transparent;
+        width: 60px;
+        height: 60px;
     }
 
-    .folders {
+    .menuopen {
         position: fixed;
         top: 0;
         right: 0;
@@ -294,6 +302,5 @@
         width: 200px;
         transform: translateX(100%);
         border-inline-start: 1px solid #e0e0e0;
-        transition: transform .6s, box-shadow .6s;
     }
 }
