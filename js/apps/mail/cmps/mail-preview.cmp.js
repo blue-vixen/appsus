@@ -10,7 +10,7 @@ export default {
         <ul class="mail-preview clean-list" :class="markRead" @click="updateRead(email)">
             <!-- <li class="star"></li> -->
             <li class="bold">{{email.to || email.from}}</li>
-            <li><span class="bold">{{email.subject}} -</span> {{email.body}}</li>
+            <li><span class="bold">{{email.subject}}</span><span> - {{email.body}}</span></li>
             <li>{{renderDate}}</li>
             <!-- <div class="actions">
                 <button title="delete" class="btn-delete" @click="remove(email.id)"></button>

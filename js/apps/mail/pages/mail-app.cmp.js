@@ -11,7 +11,7 @@ export default {
        <section class="mail-app app-main">
             <div class="side-bar">
                 <h3>Welcome</h3>
-                <button @click="composeNew">Compose</button>
+                <button @click="composeNew"><span>Compose</span></button>
                 <mail-folder-list @filtered="setDisplay"/>
             </div>
             <div class="flex main-mail-display">
@@ -72,19 +72,23 @@ export default {
                     console.log(emails)
                     this.emails = emails
                 })
-        }
-
-    },
-    computed: {
-        getEmailsToShow() {
-            let emails = this.emails
-            if (this.sortBy === 'Date') emails.sort(function (a, b) {
+        },
+        sortByDate(emails) {
+            emails.sort(function (a, b) {
                 var ar1 = a.sentAt;
                 var ar2 = b.sentAt;
                 if (ar1 < ar2) return -1;
                 if (ar1 > ar2) return 1;
                 return 0
             });
+            return emails
+        }
+
+    },
+    computed: {
+        getEmailsToShow() {
+            let emails = this.emails
+            if (this.sortBy === 'Date') emails = sortByDate(emails)
 
             if (this.sortBy === "Subject") emails.sort(function (a, b) {
                 var ar1 = a.subject.toUpperCase();
