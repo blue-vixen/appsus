@@ -3,9 +3,10 @@ import { eventBus } from '../../../services/event-bus-service.js'
 export default {
     name: 'folder-list',
     template: `
-    <section>
+    <section :class="">
         <button class="btn-menu" @click="isMenuOpen = !isMenuOpen"></button>
         <ul class="folders clean-list" :class="{menuopen: isMenuOpen}">
+            <button class="close-btn" @click="isMenuOpen = !isMenuOpen"></button>
             <li class="inbox-folder" @click="setFolder('inbox')">Inbox<span> {{unreadCount}}</span></li>
             <li class="sent-folder" @click="setFolder('sent')">Sent</li>
             <li class="draft-folder" @click="setFolder('drafts')">Drafts</li>
