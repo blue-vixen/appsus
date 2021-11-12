@@ -15,7 +15,7 @@ export default {
                 <mail-folder-list @filtered="setDisplay"/>
             </div>
             <div class="flex main-mail-display">
-                <mail-filter @filtered="setFilter"/>
+                <mail-filter @filtered="setFilter" @sorted="setSort"/>
                 <mail-list :emails="emails" @selected="selectEmail"/>
                 
             </div>
@@ -32,7 +32,8 @@ export default {
                 isStarred: null
             },
             selectedEmail: null,
-            unreadCount: 0
+            unreadCount: 0,
+            sortBy: 'Date'
         }
     },
     created() {
@@ -62,6 +63,9 @@ export default {
             else this.criteria.isRead = null
             this.criteria.txt = txt
         },
+        setSort(sortBy) {
+            this.sortBy = sortBy
+        },
         update() {
             mailService.query(this.criteria)
                 .then(emails => {
@@ -72,7 +76,33 @@ export default {
 
     },
     computed: {
+        getEmailsToShow() {
+            let emails = this.emails
+            if (this.sortBy === 'Date') emails.sort(function (a, b) {
+                var ar1 = a.sentAt;
+                var ar2 = b.sentAt;
+                if (ar1 < ar2) return -1;
+                if (ar1 > ar2) return 1;
+                return 0
+            });
 
+            if (this.sortBy === "Subject") emails.sort(function (a, b) {
+                var ar1 = a.subject.toUpperCase();
+                var ar2 = b.subject.toUpperCase();
+                if (ar1 < ar2) return -1;
+                if (ar1 > ar2) return 1;
+                return 0;
+            })
+            if (this.sortBy === "Sender") emails.sort(function (a, b) {
+                var ar1 = a.sender.toUpperCase();
+                var ar2 = b.sender.toUpperCase();
+                if (ar1 < ar2) return -1;
+                if (ar1 > ar2) return 1;
+                return 0;
+            })
+
+            return emails
+        }
     },
     components: {
         mailList,
@@ -82,14 +112,19 @@ export default {
     watch: {
         criteria: {
             handler(newVal, oldVal) {
-
                 console.log('criteria has changed!')
                 mailService.query(this.criteria)
                     .then(emails => {
+                        emails.sort(function (a, b) {
+                            var ar1 = a.sentAt;
+                            var ar2 = b.sentAt;
+                            if (ar1 < ar2) return 1;
+                            if (ar1 > ar2) return -1;
+                            return 0
+                        })
                         this.emails = emails
-                        // emails.forEach(email => {
-                        //     if (email.isRead !== true && email.status === 'inbox') this.unreadCount++
-                        // })
+                        let unreads = this.emails.filter(email => email.isRead === false)
+                        this.unreadCount = unreads.length
                     })
             },
             deep: true,
@@ -99,6 +134,35 @@ export default {
             handler() {
                 eventBus.$emit('updateCount', this.unreadCount)
             }
+        },
+        sortBy: {
+            handler() {
+                let emails = this.emails
+                if (this.sortBy === 'Date') emails.sort(function (a, b) {
+                    var ar1 = a.sentAt;
+                    var ar2 = b.sentAt;
+                    if (ar1 < ar2) return 1;
+                    if (ar1 > ar2) return -1;
+                    return 0
+                });
+
+                if (this.sortBy === "Subject") emails.sort(function (a, b) {
+                    var ar1 = a.subject.toUpperCase();
+                    var ar2 = b.subject.toUpperCase();
+                    if (ar1 < ar2) return -1;
+                    if (ar1 > ar2) return 1;
+                    return 0;
+                })
+                if (this.sortBy === "Sender") emails.sort(function (a, b) {
+                    var ar1 = a.from.toUpperCase();
+                    var ar2 = b.from.toUpperCase();
+                    if (ar1 < ar2) return -1;
+                    if (ar1 > ar2) return 1;
+                    return 0;
+                })
+
+
+            },
         }
     },
     components: {

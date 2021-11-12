@@ -7,7 +7,7 @@ export default {
     template: `
         <div class="mail-expand clean-list">
             <div class="expand-line flex space-between">
-                <h3>{{email.from}}</h3>
+                <h3>{{email.from || email.to}}</h3>
                 <div class="actions">
                     <button title="delete" class="btn-delete" @click="remove(email.id)"></button>
                     <button title="expand" class="btn-expand" @click="redirectToMail(email.id)"></button>

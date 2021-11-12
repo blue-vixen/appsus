@@ -10,7 +10,7 @@ const options = {
             <!-- <user-msg /> -->
             <app-header />
             <router-view />
-            <app-footer />
+            <!-- <app-footer /> -->
         </section>
     `,
     components: {

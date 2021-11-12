@@ -4,7 +4,8 @@ export default {
     template: `
     <div class="mail-details flex app-main" v-if="email">
     
-        <h3>From: {{email.from}}</h3>
+        <h3 v-if="email.from">From: {{email.from}}</h3>
+        <h3 v-if="email.to">To: {{email.to}}</h3>
         <h4>At: {{renderDate}}</h4>
          
         <div class="actions">
