@@ -5,8 +5,9 @@ export default {
     template: `
         <ul class="note-list clean-list">
             <li v-for="note in notes" :key="note.id" class="note-list-container">
-                <note-preview :note="note"/>
-            </li>
+                <section class="card">
+                    <note-preview :note="note"/>
+                </section>            </li>
         </ul>
     `,
 

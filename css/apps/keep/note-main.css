@@ -17,41 +17,61 @@
 }
 
 .side-menu button{
-    background-color: transparent;
+background-color: transparent;
 text-align: start;
 border: 1px solid transparent;
 border-radius: 0 25px 25px 0;
 padding: 12px;
 }
 
+.side-menu .keeps-label{
+    margin-top: 10px;
+}
+
 .side-menu button:hover{
     background-color: #f1f3f4;
 }
 
-.side-menu span{
+.side-menu button::before{
 font-family: fa;
 font-size: larger;
 color: #646363;
+margin-inline-end: 4px;
 }
 
-.keeps-label span::before{
+
+
+
+.keeps-label::before{
     content: '\f0eb';
 }
 
-.pined-label span::before{
+.pinned-label::before{
     content: '\f08d';
 }
 
-.archiv-label span::before{
+.archiv-label::before{
     content: '\f187';
 }
 
 
 /* ----------notes-section---------- */
+
+.notes-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #646363;
+}
+
+.notes-section h2{
+    margin: 20px;
+}
+
 .note-app{
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: flex-start;    
 }
 
 .note-app h2{
@@ -59,29 +79,21 @@ color: #646363;
 }
 
 .note-list{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    width: 90%;
-    
-    /* column-gap: .25em;
-    
-    margin-top: 25px;
-    vertical-align: baseline; */
+    column-count: 5;
+    column-gap: 1em;
+    width: 100%;
+}
 
-    /* display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    grid-auto-flow:row dense; */
+.card{
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
 }
 
 .note-preview{
-    background-color: #ffffff;
     width: 200px;
     min-height: 150px;
+    border-radius: 8px;
     margin: 20px;
     display: flex;
     justify-content: space-between;
@@ -93,11 +105,14 @@ color: #646363;
     padding: 10px;
 }
 
-.line-bar{
-    background-color: rgb(231, 228, 228);
-    width: 80%;
-    height: 1px;
+.section-titles{
+    text-align: start;
+    color: #646363;
+    margin: 20px;
+    font-size: 12px;
 }
+
+
 
 /* note-img */
 

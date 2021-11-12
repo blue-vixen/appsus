@@ -12,18 +12,21 @@ export default {
     template: `
         <section class="note-app-layout app-main">
             <div class="side-menu">
-                <button class="keeps-label"><span>   </span> All KEEPS</button>
-                <button class="pined-label"><span>  </span> Pined KEEPS</button>
-                <button class="archiv-label"><span>   </span> Archive</button>
+                <button class="keeps-label"><span></span> All KEEPS</button>
+                <button class="pinned-label"><span></span> Pinned KEEPS</button>
+                <button class="archiv-label"><span></span> Archive</button>
 
             </div>
-            <div class="note-app">
+            <div class="notes-section">
                 <h2>Let's KEEP it simple...</h2>
                 <note-add/>
-                <note-pined :notes="pinedToShow"/>
-                <div class="line-bar"></div>
-                <note-list :notes="unPinedToShow"/>
-                <note-edit :note="selectedNote" v-if="selectedNote"/>
+                <div class="note-app">
+                    <h4 class="section-titles">Pinned KEEPS</h4>
+                    <note-pined :notes="pinedToShow"/>
+                    <h4 class="section-titles">Other KEEPS</h4>
+                    <note-list :notes="unPinedToShow"/>
+                    <note-edit :note="selectedNote" v-if="selectedNote"/>
+                </div>
             </div>
         </section>
     `,
