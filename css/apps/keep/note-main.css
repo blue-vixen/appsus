@@ -1,6 +1,53 @@
 @import 'note-edit-bar.css';
 @import 'note-add-bar.css';
 
+.note-app-layout{
+    display: flex;
+}
+
+/* -----------side-menu---------- */
+
+.side-menu{
+    display: flex;
+    flex-direction: column;
+    /* background-color: lemonchiffon; */
+    gap: 15px;
+    width: 200px;
+    height: 100%;
+}
+
+.side-menu button{
+    background-color: transparent;
+text-align: start;
+border: 1px solid transparent;
+border-radius: 0 25px 25px 0;
+padding: 12px;
+}
+
+.side-menu button:hover{
+    background-color: #f1f3f4;
+}
+
+.side-menu span{
+font-family: fa;
+font-size: larger;
+color: #646363;
+}
+
+.keeps-label span::before{
+    content: '\f0eb';
+}
+
+.pined-label span::before{
+    content: '\f08d';
+}
+
+.archiv-label span::before{
+    content: '\f187';
+}
+
+
+/* ----------notes-section---------- */
 .note-app{
     display: flex;
     flex-direction: column;
