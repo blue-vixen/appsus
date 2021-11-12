@@ -5,7 +5,7 @@ export default {
         <div class="note-youtube  note-title">
             <h3> {{note.info.title}} </h3>
             <hr>
-            <iframe width=100% :src="getVideoUrl" frameBorder="0" allowfullscreen > 
+            <iframe width=100% :src="getVideoUrl" frameBorder="0" allowfullscreen >
             </iframe>       
         </div>
     `,
