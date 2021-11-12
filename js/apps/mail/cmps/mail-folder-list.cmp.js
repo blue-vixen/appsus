@@ -4,19 +4,19 @@ export default {
     name: 'folder-list',
     template: `
     <section>
-        <ul class="folders clean-list">
+        <button class="btn-menu" @click="isMenuOpen = !isMenuOpen"></button>
+        <ul class="folders clean-list" :class="{menuopen: isMenuOpen}">
             <li class="inbox-folder" @click="setFolder('inbox')">Inbox<span> {{unreadCount}}</span></li>
             <li class="sent-folder" @click="setFolder('sent')">Sent</li>
             <li class="draft-folder" @click="setFolder('drafts')">Drafts</li>
             <li class="trash-folder" @click="setFolder('trash')">Trash</li>
         </ul>
-        <button class="btn-menu" >☰</button>
-</section>
+    </section>
 `,
     data() {
         return {
             unreadCount: null,
-            isBurgerActive: false
+            isMenuOpen: false
         }
     },
     created() {
