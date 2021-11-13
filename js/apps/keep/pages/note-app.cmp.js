@@ -42,12 +42,14 @@ export default {
     },
     created() {
         this.notes = noteService.query()
+        eventBus.$on('addNewNote', this.addNewNote)
         eventBus.$on('remove', this.removeNote)
+        eventBus.$on('updateNote', this.onUpdateNote)
+
         eventBus.$on('colorChanged', this.changeBgColor)
         eventBus.$on('pinNote', this.pinNote)
         eventBus.$on('toggleModal', this.isSelectedNote)
-        eventBus.$on('addNewNote', this.addNewNote)
-
+        eventBus.$on('updateArchive', this.updateArchive)
     },
     methods: {
         addNewNote(note) {
@@ -60,13 +62,19 @@ export default {
         },
 
         removeNote(id) {
+            if(this.selectedNote) this.selectedNote = null
             noteService.remove(id)
                 .then(() => {
                     this.notes = this.notes.filter(note => note.id !== id)
                 })
         },
 
+        onUpdateNote(note){
+            noteService.updateNote(note)
+        },
+
         changeBgColor(noteId, color) {
+            console.log(noteId, color);
             noteService.changeBgColor(noteId, color)
                 .then(() => {
                     this.notes = noteService.query()
@@ -81,8 +89,13 @@ export default {
         },
 
         isSelectedNote(note) {
-            if(!this.selectedNote)return this.selectedNote = note
+            if (!this.selectedNote) return this.selectedNote = note
             this.selectedNote = null
+            noteService.updateNote(note)
+        },
+        updateArchive(note) {
+            note.isArchive = !note.isArchive
+            noteService.updateNote(note)
         }
     },
 

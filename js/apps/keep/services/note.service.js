@@ -7,6 +7,7 @@ const gNotes = [
         id: "n101",
         type: "note-txt",
         isPinned: false,
+        isArchive: false,
         info: {
             title: "Title",
             txt: "Fullstack Me Baby!"
@@ -17,6 +18,7 @@ const gNotes = [
         id: "n102",
         type: "note-img",
         isPinned: false,
+        isArchive: false,
         info: {
             url: "https://i.pinimg.com/236x/56/e8/71/56e8715f113c1244257bff1e45e539f6--rupaul-drag-drag-race.jpg",
             title: "Yekaterina Lobaznyuk"
@@ -27,6 +29,7 @@ const gNotes = [
         id: "n103",
         type: "note-img",
         isPinned: false,
+        isArchive: false,
         info: {
             url: "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/2020BenDeLaCreme-Earnest-1585074372.jpg",
             title: "BenDeLaCreme"
@@ -38,6 +41,7 @@ const gNotes = [
         id: "n104",
         type: "note-todos",
         isPinned: false,
+        isArchive: false,
         info: {
             label: "Get my stuff together",
             todos: [
@@ -57,6 +61,7 @@ const gNotes = [
         id: "n105",
         type: "note-img",
         isPinned: true,
+        isArchive: false,
         info: {
             url: "https://dynamicmedia.livenationinternational.com/Media/n/a/c/5f9eeadd-cc3d-45aa-80dd-905ea5c3dd75.jpg",
             title: "Trixie Mattel"
@@ -67,6 +72,7 @@ const gNotes = [
         id: "n106",
         type: "note-youtube",
         isPinned: false,
+        isArchive: false,
         info: {
             url: "https://www.youtube.com/watch?v=t-DJIgsPN0o",
             title: "RuPaul - Kitty Girl"
@@ -78,6 +84,7 @@ const gNotes = [
         id: "n107",
         type: "note-todos",
         isPinned: true,
+        isArchive: false,
         info: {
             title: "Get my stuff together",
             todos: [
@@ -102,7 +109,8 @@ export const noteService = {
     remove,
     changeBgColor,
     pinNote,
-    addNewNote
+    addNewNote,
+    updateNote
 }
 
 function query() {
@@ -118,14 +126,9 @@ function addNewNote(note){
     return storageService.post(NOTES_KEY, note)
 }
 
-// function _createNotes() {
-//     let notes = loadFromStorage(NOTES_KEY);
-//     if (!notes || !notes.length) {
-//         notes = gNotes;
-//         saveToStorage(NOTES_KEY, gNotes);
-//     }
-//     return notes;
-// }
+function updateNote(note){
+    storageService.put(NOTES_KEY, note)
+}
 
 function changeBgColor(noteId, color) {
     return getById(noteId)
