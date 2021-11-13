@@ -114,8 +114,22 @@ margin-inline-end: 4px;
     .side-menu {
         justify-content: center;
         flex-direction: row;
-        align-items: space-between;
+        align-items: center;
         width: 100%;
+    }
+
+    .side-menu button {
+        margin: 0;
+    }
+
+    .side-menu .keeps-label {
+        margin: 0;
+    }
+    
+    .note-add-bar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 }
