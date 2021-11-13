@@ -61,6 +61,7 @@ export default {
         },
         setDisplay(folder) {
             this.criteria.display = folder;
+            this.criteria.isStarred = !this.criteria.isStarred;
         },
         setFilter(filterBy) {
             const { msgStatus, txt } = filterBy
