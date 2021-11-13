@@ -7,7 +7,7 @@ export default {
             <div class="home-page-links">
                 <router-link to="/apps/keep">Keep</router-link>
                 <router-link to="/apps/mail">Mail</router-link>
-                <router-link to="">Books</router-link>
+                <router-link to="/apps/books">Books</router-link>
             </div>
         </div>
         

@@ -9,6 +9,7 @@ export default {
         <h4>At: {{renderDate}}</h4>
          
         <div class="actions">
+            <button title="reply" class="btn-reply" @click="createReply(email.from, email.subject)"></button>
             <button title="delete" class="btn-delete" @click="remove(email.id)"></button>
             <button title="save to note" class="btn-note"></button>
         </div>
@@ -29,6 +30,9 @@ export default {
     methods: {
         redirectToList() {
             this.$router.push({ path: '/apps/mail' })
+        },
+        createReply(from, subject) {
+            this.$router.push({ path: `/mail/compose?subject=RE: ${subject}&from=${from}` })
         }
     },
     computed: {

@@ -1,4 +1,4 @@
-import { eventBus } from '../services/event-bus-service.js';
+import { eventBus } from "../services/event-bus-service.js";
 
 export default {
     template: `
@@ -18,6 +18,7 @@ export default {
     },
     methods: {
         showMsg(msg) {
+            console.log('msg')
             this.msg = msg;
             setTimeout(() => {
                 this.msg = null;

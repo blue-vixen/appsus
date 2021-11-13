@@ -32,15 +32,26 @@ export default {
         }
     },
     methods: {
+        createMsg(txt, type) {
+            return {
+                txt,
+                type
+            }
+        },
         save() {
             mailService.save(this.emailToEdit)
                 .then(email => {
                     console.log('email after save', email)
                     eventBus.$emit('updated', email)
+                    const msg = this.createMsg('Mail Sent Successfully!', 'success')
+                    console.log(msg)
+                    eventBus.$emit('showMsg', msg)
                     this.$router.push({ path: '/apps/mail' })
                 })
         },
         cancel() {
+            const msg = this.createMsg('Mail not sent', 'error')
+            eventBus.$emit('showMsg', msg)
             this.$router.push({ path: '/apps/mail' })
         }
     },
@@ -49,6 +60,7 @@ export default {
             handler() {
                 this.emailToEdit.subject = this.$route.query.subject
                 this.emailToEdit.body = this.$route.query.body
+                this.emailToEdit.to = this.$route.query.from
             },
             immediate: true
         }

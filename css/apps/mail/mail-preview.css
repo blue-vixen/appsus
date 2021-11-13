@@ -118,6 +118,9 @@
     background-color: white;
 }
 
+.btn-reply::before {
+    content: '\f3e5';
+}
 
 .btn-delete::before {
     content: '\f1f8';
@@ -337,6 +340,12 @@
     .mail-preview {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
+    }
+    .mail-preview li {
+        /* margin-inline-end: 20px; */
+        padding: 10px;
+        overflow: hidden;
+        white-space: normal;
     }
 
 }
