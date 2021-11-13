@@ -31,40 +31,51 @@ const gNotes = [
         isPinned: false,
         isArchive: false,
         info: {
-            url: "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/2020BenDeLaCreme-Earnest-1585074372.jpg",
-            title: "BenDeLaCreme"
+            url: "https://i.pinimg.com/originals/62/a5/9b/62a59b21963b12f47a4ea94d0f7c1bb8.gif",
+            title: "OMG!"
+        },
+        style: { backgroundColor: "#f28b82" }
+    },
+    {
+        id: "n104",
+        type: "note-img",
+        isPinned: false,
+        isArchive: false,
+        info: {
+            url: "https://media1.giphy.com/media/ZbOHnSQUO4GlyR2edO/200w.gif",
+            title: "YYYYAAAAASSSS!"
         },
         style: { backgroundColor: "#f28b82" }
     },
 
-    {
-        id: "n104",
-        type: "note-todos",
-        isPinned: false,
-        isArchive: false,
-        info: {
-            title: "Get my stuff together",
-            todos: [
-                {
-                    txt: "Driving liscence",
-                    doneAt: null
-                },
-                {
-                    txt: "Coding power",
-                    doneAt: 187111111
-                }
-            ]
-        },
-        style: { backgroundColor: "#cbf0f8" }
-    },
+    // {
+    //     id: "n104",
+    //     type: "note-todos",
+    //     isPinned: false,
+    //     isArchive: false,
+    //     info: {
+    //         title: "Get my stuff together",
+    //         todos: [
+    //             {
+    //                 txt: "Driving liscence",
+    //                 doneAt: null
+    //             },
+    //             {
+    //                 txt: "Coding power",
+    //                 doneAt: 187111111
+    //             }
+    //         ]
+    //     },
+    //     style: { backgroundColor: "#cbf0f8" }
+    // },
     {
         id: "n105",
         type: "note-img",
         isPinned: true,
         isArchive: false,
         info: {
-            url: "https://dynamicmedia.livenationinternational.com/Media/n/a/c/5f9eeadd-cc3d-45aa-80dd-905ea5c3dd75.jpg",
-            title: "Trixie Mattel"
+            url: "https://c.tenor.com/9RkRCoaX9KYAAAAd/kylie-sonique-love-sonique.gif",
+            title: "Best GIF EVER!"
         },
         style: { backgroundColor: "#ccff90" }
     },
@@ -219,11 +230,11 @@ function query() {
     return notes;
 }
 
-function addNewNote(note){
+function addNewNote(note) {
     return storageService.post(NOTES_KEY, note)
 }
 
-function updateNote(note){
+function updateNote(note) {
     storageService.put(NOTES_KEY, note)
 }
 

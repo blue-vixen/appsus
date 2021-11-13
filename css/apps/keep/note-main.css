@@ -106,14 +106,18 @@ margin-inline-end: 4px;
     .note-list {
         column-count: 1;
     }
-    /* .note-app-layout {
+    .note-app-layout {
         flex-direction: column;
     }
     
+    
     .side-menu {
+        justify-content: center;
         flex-direction: row;
         align-items: space-between;
-    } */
+        width: 100%;
+    }
+
 }
 
 .card{
