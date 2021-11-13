@@ -6,15 +6,16 @@ export default {
     template: `
         <section class="note-editor modal-editor" :style="{ 'background-color': getColor}">
             <div class="editor-header">
-                <input class="title-input" type="text" :placeholder="titlePlaceholder" v-model="editedNote.info.title" @keyup.enter="createNewNote">
-                <button class="edit-pin edit-btns" @click="pinNote(note.id)" :style="{ color: pinnedNoteStyle}"></button>
+            <button class="close-editor-btn" @click="closeEditor"></button>
+                <input class="title-input" type="text" :placeholder="titlePlaceholder" v-model="editedNote.info.title" @keyup.enter="closeEditor">
+                <button class="edit-pin edit-btns" @click="pinNote()" :style="{ color: pinnedNoteStyle}"></button>
             </div>
+            <hr>
             <div class="editor-main">
                 <textarea class="txt-input" cols="30" rows="5" v-model="editedNote.info.txt"></textarea>
             </div>
             <div class="editor-footer">
                 <note-editor-edit-bar :note="note"/>
-                <button class="close-editor-btn" @click="closeEditor">X</button>
             </div>
         </section>
     `,
@@ -26,22 +27,36 @@ export default {
     },
     created() {
         this.editedNote = this.note;
+        eventBus.$on('changeBgColor', this.setBgColor)
+        eventBus.$on('sendNote' ,this.sendNote)
+
     },
-    computed:{
-        getColor(){
-            return this.note.style.backgroundColor
+    computed: {
+
+
+        getColor() {
+            return this.editedNote.style.backgroundColor
         },
+
         pinnedNoteStyle() {
-            if (this.note.isPinned)
+            if (this.editedNote.isPinned)
                 return '#ffa500'
         }
     },
-    methods:{
-        closeEditor(){
-            eventBus.$emit('toggleModal')
+    methods: {
+        closeEditor() {
+            eventBus.$emit('toggleModal', this.editedNote)
         },
-        pinNote(noteId) {
-            eventBus.$emit('pinNote', noteId)
+        pinNote() {
+            this.editedNote.isPinned = !this.editedNote.isPinned
+            eventBus.$emit('updateNote', this.editedNote)
+        },
+        setBgColor(color){
+         this.editedNote.style.backgroundColor = color
+        },
+        sendNote() {
+            eventBus.$emit('updateNote', this.editedNote)
+            this.$router.push({ path: `/mail/compose?subject=${this.editedNote.info.title}` })
         },
     },
 

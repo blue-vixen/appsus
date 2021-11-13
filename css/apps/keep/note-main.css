@@ -119,7 +119,6 @@ margin-inline-end: 4px;
 .note-img img{
 width: 184px;
 border-radius: 3px;
-
 }
 
 /* note-video */
@@ -134,12 +133,16 @@ iframe{
     position: relative;
 }
 
-.edit-modal .modal-editor{
-    position: absolute;
+
+.edit-modal .note-editor-section{
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
+}
+
+.note-editor{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -154,7 +157,6 @@ iframe{
 .editor-header{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
 }
 .editor-header .title-input {
     background-color: transparent;
@@ -175,8 +177,41 @@ iframe{
     font-size: 1.17rem;
 }
 
+.editor-main img{
+    width: 100%;
+}
 
+.editor-main .url-input{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    color: #646363;
+    font-size: 1rem;
+}
 
+.close-editor-btn, .remove-todo-btn{
+    background-color: transparent;
+    border: none;
+    padding: 10px 0px;
+    font-family: fa;
+    font-size: 1.2rem;
+    color: #333232;
+}
+
+.close-editor-btn::before{
+    content: '\f00d';
+}
+
+.remove-todo-btn{
+    font-size: 0.9rem;
+}
+
+.remove-todo-btn::before{
+    content: '\f2ed';
+}
+.modal-editor hr{
+    width: 100%;
+}
 
 /* helpers */
 

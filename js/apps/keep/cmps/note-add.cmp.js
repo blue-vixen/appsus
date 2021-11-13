@@ -72,6 +72,7 @@ export default {
                 id: null,
                 type: "note-txt",
                 isPinned: false,
+                isArchive: false,
                 info: {
                     title: this.inputVal,
                     txt: "Insert your text here..."
@@ -86,6 +87,7 @@ export default {
                 id: null,
                 type: "note-img",
                 isPinned: false,
+                isArchive: false,
                 info: {
                     url: this.inputVal,
                     title: "Your Image..."
@@ -100,6 +102,7 @@ export default {
                 id: null,
                 type: "note-youtube",
                 isPinned: false,
+                isArchive: false,
                 info: {
                     url: this.inputVal,
                     title: "Your Video..."
@@ -114,6 +117,7 @@ export default {
                 id: null,
         type: "note-todos",
         isPinned: false,
+        isArchive: false,
         info: {
             title: this.inputVal,
             todos: [

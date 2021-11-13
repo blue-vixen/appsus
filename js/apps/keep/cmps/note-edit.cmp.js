@@ -7,7 +7,7 @@ import noteYoutube from '../cmps/note-types-cmps/edit.cmps/note-youtube-edit.cmp
 export default {
     props: ['note'],
     template: `
-        <div class="note-editor">
+        <div class="note-editor-section">
             <component
                 :note="note" 
                 :is="note.type"> 
