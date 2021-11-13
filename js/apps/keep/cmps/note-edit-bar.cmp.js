@@ -31,7 +31,7 @@ export default {
             eventBus.$emit('remove', noteId)
         },
 
-        editNote(note){
+        editNote(note) {
             eventBus.$emit('selectedNote', note)
         },
 
@@ -49,7 +49,22 @@ export default {
 
         send(note) {
             console.log(note)
-            this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}` })
+            switch (note.type) {
+                case 'note-youtube':
+                case 'note-img':
+                    this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}&body=${note.info.url}` })
+                    break;
+                case 'note-txt':
+                    this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}&body=${note.info.txt}` })
+                    break;
+                case 'note-todos':
+                    let strs = note.info.todos.map(todo => {
+                        return todo.txt
+                    })
+                    this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}&body=${strs.join(', ')}` })
+                    break;
+            }
+
         }
     },
 

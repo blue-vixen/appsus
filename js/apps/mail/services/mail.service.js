@@ -7,7 +7,8 @@ export const mailService = {
     getLoggedUser,
     remove,
     save,
-    markRead
+    markRead,
+    markStarred
 
 }
 
@@ -117,9 +118,9 @@ function query(criteria) {
         return email.status === display
     }).filter(email => {
         if (isRead === null) return true
+        // if (isStarred) return (isStarred === email.isStarred)
         else return (isRead === email.isRead)
     }).filter(email => {
-
         return email.body.toLowerCase().includes(txt) || email.subject.toLowerCase().includes(txt)
     })
     console.log(filteredMails)
@@ -133,6 +134,12 @@ function getById(emailId) {
 
 function markRead(email) {
     email.isRead = true;
+    return storageService.put(MAIL_KEY, email)
+}
+
+function markStarred(email) {
+    console.log(email)
+    email.isStarred = !email.isStarred
     return storageService.put(MAIL_KEY, email)
 }
 
