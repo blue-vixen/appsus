@@ -36,7 +36,7 @@ export default {
             eventBus.$emit('sendNote')
         },
 
-        setArchive(note){
+        setArchive(note) {
             eventBus.$emit('updateArchive', note)
         }
     },

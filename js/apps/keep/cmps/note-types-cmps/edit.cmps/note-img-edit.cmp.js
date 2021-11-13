@@ -30,7 +30,7 @@ export default {
     created() {
         this.editedNote = this.note;
         eventBus.$on('changeBgColor', this.setBgColor)
-        eventBus.$on('sendNote' ,this.sendNote)
+        eventBus.$on('sendNote', this.sendNote)
 
     },
     computed: {
@@ -53,8 +53,8 @@ export default {
             this.editedNote.isPinned = !this.editedNote.isPinned
             eventBus.$emit('updateNote', this.editedNote)
         },
-        setBgColor(color){
-         this.editedNote.style.backgroundColor = color
+        setBgColor(color) {
+            this.editedNote.style.backgroundColor = color
         },
         sendNote() {
             eventBus.$emit('updateNote', this.editedNote)
