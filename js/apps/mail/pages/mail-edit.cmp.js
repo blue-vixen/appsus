@@ -48,6 +48,7 @@ export default {
         '$route': {
             handler() {
                 this.emailToEdit.subject = this.$route.query.subject
+                this.emailToEdit.body = this.$route.query.body
             },
             immediate: true
         }

@@ -29,17 +29,23 @@ export default {
                 txt: '',
                 display: 'inbox',
                 isRead: null,
-                isStarred: null
+                isStarred: null,
+
             },
             selectedEmail: null,
             unreadCount: 0,
-            sortBy: 'Date'
+            sortBy: 'Date',
+            updated: false
         }
     },
     created() {
+        eventBus.$on('updated', this.setUpdated)
         eventBus.$on('remove', this.removeEmail)
     },
     methods: {
+        setUpdated() {
+            this.updated = !this.updated
+        },
         composeNew() {
             this.$router.push({ path: '/mail/compose' })
         },
@@ -60,6 +66,7 @@ export default {
             const { msgStatus, txt } = filterBy
             if (msgStatus === 'Read') this.criteria.isRead = true
             else if (msgStatus === 'Unread') this.criteria.isRead = false
+            else if (msgStatus === 'Starred') this.criteria.isStarred = true
             else this.criteria.isRead = null
             this.criteria.txt = txt
         },
@@ -114,6 +121,25 @@ export default {
         mailFilter
     },
     watch: {
+        updated: {
+            handler() {
+                console.log('updated')
+                mailService.query(this.criteria)
+                    .then(emails => {
+                        emails.sort(function (a, b) {
+                            var ar1 = a.sentAt;
+                            var ar2 = b.sentAt;
+                            if (ar1 < ar2) return 1;
+                            if (ar1 > ar2) return -1;
+                            return 0
+                        })
+                        this.emails = emails
+                        let unreads = this.emails.filter(email => email.isRead === false)
+                        this.unreadCount = unreads.length
+                    })
+                console.log('god damn it!')
+            }
+        },
         criteria: {
             handler(newVal, oldVal) {
                 console.log('criteria has changed!')

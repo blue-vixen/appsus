@@ -8,7 +8,7 @@ export default {
     template: `
 
         <ul class="mail-preview clean-list" :class="markRead" @click="updateRead(email)">
-            <!-- <li class="star"></li> -->
+            <li class="star" :class="renderStarred" @click.stop="markStarred(email)"></li>
             <li class="bold">{{email.to || email.from}}</li>
             <li><span class="bold">{{email.subject}}</span><span> - {{email.body}}</span></li>
             <li>{{renderDate}}</li>
@@ -26,11 +26,10 @@ export default {
         }
     },
     created() {
-        // if (this.email.isRead === false && this.email.status === 'inbox') this.$emit('updateCount', 1)
 
     },
     destroyed() {
-        // if (this.email.isRead === false && this.email.status === 'inbox') this.$emit('updateCount', -1)
+
     },
     methods: {
         remove(emailId) {
@@ -41,6 +40,11 @@ export default {
         },
         updateRead(email) {
             mailService.markRead(email)
+        },
+        markStarred(email) {
+            console.log('starred')
+            mailService.markStarred(email)
+            eventBus.$emit('updated')
         }
     },
     computed: {
@@ -51,6 +55,10 @@ export default {
                 this.unreadCount++
                 return 'unread'
             }
+        },
+        renderStarred() {
+            const { isStarred } = this.email
+            if (isStarred) return 'starred'
         },
         renderDate() {
             let mailDate = new Date(this.email.sentAt)

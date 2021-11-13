@@ -52,6 +52,18 @@ h1,h2,h3,h4,h5,h6,p,ul {
     width: 150px;
 }
 
+.main-nav-btn {
+    border: none;
+    background-color: transparent;
+}
+
+.main-nav-btn::before {
+    font-family: fa;
+    content: '\f00a';
+    font-size: 48px;
+    color:#646363;
+}
+
 /* footer */
 
 .home-page {
@@ -75,7 +87,7 @@ h1,h2,h3,h4,h5,h6,p,ul {
     gap: 20px;
     height: 100%;
     width: 100%;
-    background-image: url(/imgs/1.png);
+    background-image: url(../imgs/1.png);
     /* background-size: contain; */
     background-position: center;
     background-repeat: no-repeat;    
@@ -117,4 +129,39 @@ h1,h2,h3,h4,h5,h6,p,ul {
 
 .welcome a:first-child::before {
     content: '\f08d';
+}
+
+/* nav bar */
+
+nav {
+    position: fixed;
+    right: 20px;
+    top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.menu-img {
+    width: 50px;
+}
+
+nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color:#7AB4C2;
+    font-size: 1.5rem;
+    padding: 20px;
+}
+
+nav a:hover{
+    background-color: rgba(223, 219, 219, 0.89);
+    border-radius: 50%;
+    
 }
