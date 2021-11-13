@@ -7,15 +7,15 @@
     padding-inline-start: 0px;
 }
 
-.note-edit-bar .edit-btns{
+.note-edit-bar .edit-btns,.edit-pin{
     background-color: transparent;
     border: none;
     padding: 10px 0px;
     font-family: fa;
     font-size: 1rem;
     color: #646363;
-
 }
+
 
 .note-edit-bar .edit-btns:hover{
 color: #292828;

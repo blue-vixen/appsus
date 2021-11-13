@@ -32,7 +32,7 @@ export default {
         },
 
         editNote(note) {
-            eventBus.$emit('selectedNote', note)
+            eventBus.$emit('toggleModal', note)
         },
 
         changeColor(noteId, color) {

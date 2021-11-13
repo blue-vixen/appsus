@@ -5,7 +5,6 @@ export default {
     props: ['note'],
     template: `
         <div class="note-edit-bar">
-            <button class="edit-pin edit-btns" @click="pinNote(note.id)" :style="{ color: pinnedNoteStyle}"></button>
             <div class="edit-color-section">
                 <button class="edit-color edit-btns"></button>
                 <div class="color-palette">
@@ -21,7 +20,6 @@ export default {
             </div>
             <button class="edit-send edit-btns" @click="send(note)"></button>
             <button class="edit-archive edit-btns"></button>
-
             <button class="edit-delete edit-btns" @click="remove(note.id)"></button>
         </div>
     `,
@@ -33,10 +31,6 @@ export default {
 
         changeColor(noteId, color) {
             eventBus.$emit('colorChanged', noteId, color)
-        },
-
-        pinNote(noteId) {
-            eventBus.$emit('pinNote', noteId)
         },
 
         send(note) {

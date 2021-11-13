@@ -15,7 +15,6 @@ export default {
                 <button class="keeps-label"><span></span> All KEEPS</button>
                 <button class="pinned-label"><span></span> Pinned KEEPS</button>
                 <button class="archiv-label"><span></span> Archive</button>
-
             </div>
             <div class="notes-section">
                 <h2>Let's KEEP it simple...</h2>
@@ -25,7 +24,9 @@ export default {
                     <note-pined :notes="pinedToShow"/>
                     <h4 class="section-titles">Other KEEPS</h4>
                     <note-list :notes="unPinedToShow"/>
-                    <note-edit :note="selectedNote" v-if="selectedNote"/>
+                    <div class="edit-modal">
+                        <note-edit :note="selectedNote" v-if="selectedNote"/>
+                    </div>
                 </div>
             </div>
         </section>
@@ -44,7 +45,7 @@ export default {
         eventBus.$on('remove', this.removeNote)
         eventBus.$on('colorChanged', this.changeBgColor)
         eventBus.$on('pinNote', this.pinNote)
-        eventBus.$on('selectedNote', this.getSelectedNote)
+        eventBus.$on('toggleModal', this.isSelectedNote)
         eventBus.$on('addNewNote', this.addNewNote)
 
     },
@@ -79,8 +80,9 @@ export default {
                 })
         },
 
-        getSelectedNote(note) {
-            this.selectedNote = note
+        isSelectedNote(note) {
+            if(!this.selectedNote)return this.selectedNote = note
+            this.selectedNote = null
         }
     },
 
