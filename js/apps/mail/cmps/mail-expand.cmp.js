@@ -40,7 +40,7 @@ export default {
             this.$router.push({ path: '/mail/' + emailId })
         },
         createReply(from, subject) {
-            this.$router.push({ path: `/mail/compose?subject=RE: ${subject}&from=${from}` })
+            this.$router.push({ path: `/mail/compose?type=reply&subject=RE: ${subject}&from=${from}` })
         }
 
     },

@@ -46,13 +46,16 @@ export default {
                     const msg = this.createMsg('Mail Sent Successfully!', 'success')
                     console.log(msg)
                     eventBus.$emit('showMsg', msg)
-                    this.$router.push({ path: '/apps/mail' })
+                    if (this.$route.query.type === 'reply') this.$router.push({ path: '/apps/mail' })
+                    else if (this.$route.query) this.$router.push({ path: '/apps/keep' })
+                    else this.$router.push({ path: '/apps/mail' })
                 })
         },
         cancel() {
             const msg = this.createMsg('Mail not sent', 'error')
             eventBus.$emit('showMsg', msg)
-            if (this.$route.query) this.$router.push({ path: '/apps/keep' })
+            if (this.$route.query.type === 'reply') this.$router.push({ path: '/apps/mail' })
+            else if (this.$route.query) this.$router.push({ path: '/apps/keep' })
             else this.$router.push({ path: '/apps/mail' })
         }
     },

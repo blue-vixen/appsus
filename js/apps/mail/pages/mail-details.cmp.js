@@ -1,4 +1,6 @@
+import { eventBus } from '../../../services/event-bus-service.js';
 import { mailService } from "../services/mail.service.js";
+import { utilService } from '../../../services/utils-service.js';
 
 export default {
     template: `
@@ -33,7 +35,28 @@ export default {
         },
         createReply(from, subject) {
             this.$router.push({ path: `/mail/compose?subject=RE: ${subject}&from=${from}` })
-        }
+        },
+        // saveToNote(email) {
+        //     console.log(email)
+        //     var txt = 'subject:' + email.subject
+        //     txt += 'from:' + email.from
+        //     txt += 'body:' + email.body
+        //     var newNote = {
+        //         id: utilService.makeId(),
+        //         type: "note-txt",
+        //         isPinned: false,
+        //         info: {
+        //             txt: txt
+        //         },
+        //         backgroundColor: '#F4976C'
+        //     }
+        //     eventBus.$emit('mailToNote', newNote);
+
+        // this.$router.push({ path: `/apps/keep?title=${email.subject}&body=${email.body}` })
+        // console.log('saving...')
+        // eventBus.$emit('showMsg', { txt: 'kushilirabak!!!', type: 'error' })
+        // eventBus.$emit('sendToNote', email)
+        // }
     },
     computed: {
         renderDate() {

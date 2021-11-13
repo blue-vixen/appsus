@@ -22,13 +22,15 @@ export default {
             placeholder: "What's on your mind..."
         }
     },
+    created() {
+    },
     computed: {
-
-
-
     },
 
     methods: {
+        mailToNote(email) {
+            console.log(email)
+        },
         createNewNote() {
             let noteType = this.noteType
             switch (noteType) {
@@ -115,23 +117,23 @@ export default {
         creatTodosNote() {
             const note = {
                 id: null,
-        type: "note-todos",
-        isPinned: false,
-        isArchive: false,
-        info: {
-            title: this.inputVal,
-            todos: [
-                {
-                    txt: "buy...",
-                    doneAt: null
+                type: "note-todos",
+                isPinned: false,
+                isArchive: false,
+                info: {
+                    title: this.inputVal,
+                    todos: [
+                        {
+                            txt: "buy...",
+                            doneAt: null
+                        },
+                        {
+                            txt: "call...",
+                            doneAt: null
+                        }
+                    ]
                 },
-                {
-                    txt: "call...",
-                    doneAt: null
-                }
-            ]
-        },
-        style: { backgroundColor: "#fff475" }
+                style: { backgroundColor: "#fff475" }
             }
             eventBus.$emit('addNewNote', note)
         },

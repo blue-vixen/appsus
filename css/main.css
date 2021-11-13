@@ -182,6 +182,7 @@ nav a:hover{
     bottom: 50px;
     right: 0;
     padding: 10px;
+    z-index: 1000;
 }
 
 .success {
