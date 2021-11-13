@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+h1, h2, h3,h4, h5,h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    padding: 5px;
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.book-filter {
+    padding: 10px;
+}
+
+.app-main {
+    height: 100%;
+}
+
+
+.book-app {
+    flex-grow: 1;
+}
+
+/* book list */
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+/* book preview */
+
+.book-preview-container {
+    width: 200px;   
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    background-color: rgb(245, 245, 245);
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 8px;
+}
+
+.book-preview img {
+    height: 150px;
+    width: auto;
+}
+
+/* book details */
+
+.desc {
+    max-width: 50%;
+}
+
+.book-details, .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.book-imgs {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.book-details img:not(.sale-tag) {
+    width: 100%;
+    height: auto;
+}
+
+.sale-tag {
+    width: auto;
+    height: 100px;
+    position: relative;
+    top: 0px;
+    left: 95px;
+    
+}
+
+.review {
+    border: 1px solid black;
+}
+
+.reviews {
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+
+.book-tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    /* justify-content: space-around; */
+    
+
+}
+
+.checked {
+    color: orange;
+  }
+
+ 

@@ -2,6 +2,7 @@
 @import "./apps/keep/note-main.css";
 @import 'apps/mail/mail-preview.css';
 @import 'fonts.css';
+@import './apps/books/books.css';
 
 * {
     box-sizing: border-box;
@@ -46,6 +47,10 @@ h1,h2,h3,h4,h5,h6,p,ul {
     display: flex;
     justify-content: space-between;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.logo {
+    cursor: pointer;
 }
 
 .logo img {
@@ -99,6 +104,7 @@ h1,h2,h3,h4,h5,h6,p,ul {
     display: flex;
     gap: 10px;
 }
+
 .welcome a {
     text-decoration: none;
     padding: 20px;
@@ -136,19 +142,19 @@ h1,h2,h3,h4,h5,h6,p,ul {
 
 nav {
     position: fixed;
-    right: 20px;
+    right: 0;
     top: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 30px;
+    gap: 20px;
     background-color: white;
-    padding: 30px;
+    /* padding: 20px; */
     border-radius: 5px;
 }
 
 .menu-img {
-    width: 50px;
+    width: 40px;
     
 }
 
@@ -166,4 +172,43 @@ nav a:hover{
     background-color: rgba(223, 219, 219, 0.89);
     border-radius: 50%;
     
+}
+
+ /* user msg */
+
+ .user-msg {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    padding: 10px;
+}
+
+.success {
+    background-color: rgb(27, 180, 27);
+}
+
+.error {
+    background-color: red;
+}
+
+
+/* about page */
+
+.hero-img {
+    height: 150px;
+    border-radius: 50%;
+}
+
+.hero-img:first-child {
+    filter: grayscale(100%);
+}
+
+.about-container button {
+    padding: 20px;
+    font-size: 1.5rem;
+    color:lightslategray;
+    background-color: whitesmoke;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 0.4em;
+    border:none;
 }

@@ -43,6 +43,12 @@ export default {
         eventBus.$on('remove', this.removeEmail)
     },
     methods: {
+        createMsg(txt, type) {
+            return {
+                txt,
+                type
+            }
+        },
         setUpdated() {
             this.updated = !this.updated
         },
@@ -57,6 +63,9 @@ export default {
             mailService.remove(emailId)
                 .then(() => {
                     this.emails = this.emails.filter(email => email.id !== emailId)
+                    const msg = this.createMsg('Mail deleted successfully!', 'success')
+                    console.log(msg)
+                    eventBus.$emit('showMsg', msg)
                 })
         },
         setDisplay(folder) {

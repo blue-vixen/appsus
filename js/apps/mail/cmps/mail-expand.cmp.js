@@ -9,6 +9,7 @@ export default {
             <div class="expand-line flex space-between">
                 <h3>{{email.from || email.to}}</h3>
                 <div class="actions">
+                    <button title="reply" class="btn-reply" @click="createReply(email.from, email.subject)"></button>
                     <button title="delete" class="btn-delete" @click="remove(email.id)"></button>
                     <button title="expand" class="btn-expand" @click="redirectToMail(email.id)"></button>
                     <button title="save to note" class="btn-note"></button>
@@ -37,7 +38,11 @@ export default {
         },
         redirectToMail(emailId) {
             this.$router.push({ path: '/mail/' + emailId })
+        },
+        createReply(from, subject) {
+            this.$router.push({ path: `/mail/compose?subject=RE: ${subject}&from=${from}` })
         }
+
     },
     computed: {
 
