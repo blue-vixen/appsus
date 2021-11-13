@@ -166,6 +166,10 @@
     padding: 10px;
 }
 
+.mail-expand h3,.mail-details h3 {
+    margin-top:20px;
+    word-break: break-word;
+}
 
 /* mail details */
 
