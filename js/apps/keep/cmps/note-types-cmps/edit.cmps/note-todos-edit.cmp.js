@@ -4,7 +4,7 @@ import noteEditorEditBar from '../../../cmps/note-editor-edit-bar.cmp.js';
 export default {
     props: ['note'],
     template: `
-        <section class="note-editor modal-editor" :style="{ 'background-color': getColor}">
+        <section class="note-editor modal-editor" :style="{'background-color': getColor}">
             <div class="editor-header">
             <button class="close-editor-btn" @click="closeEditor"></button>
                 <input class="title-input" type="text" :placeholder="titlePlaceholder" v-model="editedNote.info.title" @keyup.enter="closeEditor">
@@ -14,9 +14,15 @@ export default {
             <div class="editor-main">
             <ul>
                 <li class="todo" v-for="(todo, idx) in editedNote.info.todos" :key="idx">
-                    <div @click="markTodo(idx)"  >{{todo.txt}}</div>
-                <button class="remove-todo-btn" @click="removeTodo(idx)"></button>
+                    <div class="todo-row" @click="markTodo(idx)">
+                        <div  :class="isCheck(idx)" ></div>
+                        <div :style="{'text-decoration': isMark(idx)}">{{todo.txt}}</div>
+                    </div>
+                    <button class="remove-todo-btn" @click="removeTodo(idx)"></button>
                 </li>
+                <input class="todo-input" type="text" placeholder="New Todo here..." v-model="newTodo" @keyup.enter="addTodo">
+                <button class="add-todo-btn" @click="addTodo"></button>
+
             </ul>
 
 
@@ -30,6 +36,7 @@ export default {
         return {
             editedNote: null,
             titlePlaceholder: "Enter your KEEP title here...",
+            newTodo: null
         };
     },
     created() {
@@ -45,15 +52,7 @@ export default {
             if (this.editedNote.isPinned)
                 return '#ffa500'
         },
-        isMark() {
-            if (this.editedNote.info.todos[this.noteIdx].doneAt) {
-                return "line-through"
-            }
-            else {
-                return "none"
-            }
-        },
-
+        
     },
     methods: {
         closeEditor() {
@@ -77,6 +76,24 @@ export default {
             }
             else {
                 this.editedNote.info.todos[idx].doneAt = Date.now()
+            }
+        },
+        isMark(idx) {
+            if (this.editedNote.info.todos[idx].doneAt) {
+                return "line-through"
+            }
+            else {
+                return "none"
+
+            }
+        },
+
+        isCheck(idx) {
+            if (this.editedNote.info.todos[idx].doneAt) {
+                return "check-todo"
+            }
+            else {
+                return "unchek-todo"
 
             }
         },
@@ -85,8 +102,16 @@ export default {
             console.log(idx);
             this.editedNote.info.todos.splice(idx, 1)
             console.log(this.editedNote);
-
         },
+
+        addTodo(){
+            const newTodo = {
+                txt: this.newTodo,
+                doneAt: null,
+            }
+            this.editedNote.info.todos.push(newTodo)
+            this.newTodo=null
+        }
 
     },
 

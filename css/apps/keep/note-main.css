@@ -112,7 +112,61 @@ margin-inline-end: 4px;
     font-size: 12px;
 }
 
+/* note-txt */
 
+.note-txt p{
+    text-align: start;
+}
+
+/* note-todos */
+.note-todos li div{
+    text-align: start;
+}
+
+.note-todos .todo-row{
+    display: flex;
+    align-items: center;
+
+}
+
+.note-editor .editor-main .todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.note-editor .editor-main .todo .todo-row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+}
+
+.note-editor .editor-main .todo-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.1px solid grey;
+    width: 80%;
+    color: #646363;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+.check-todo, .unchek-todo{
+    background-color: transparent;
+    border: none;
+    padding: 10px 0px;
+    font-family: far;
+    font-size: 1.2rem;
+    color: #333232;
+}
+
+.check-todo::before{
+    content: '\f14a';
+}
+.unchek-todo::before{
+    content: '\f0c8';
+}
 
 /* note-img */
 
@@ -189,7 +243,7 @@ iframe{
     font-size: 1rem;
 }
 
-.close-editor-btn, .remove-todo-btn{
+.close-editor-btn, .remove-todo-btn, .add-todo-btn{
     background-color: transparent;
     border: none;
     padding: 10px 0px;
@@ -202,13 +256,18 @@ iframe{
     content: '\f00d';
 }
 
-.remove-todo-btn{
+.remove-todo-btn, .add-todo-btn{
     font-size: 0.9rem;
 }
 
 .remove-todo-btn::before{
     content: '\f2ed';
 }
+
+.add-todo-btn::before{
+    content: '\f067';
+}
+
 .modal-editor hr{
     width: 100%;
 }
