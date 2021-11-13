@@ -6,7 +6,7 @@ export default {
             <h3> {{note.info.title}} </h3>
             <hr>
             <iframe width=100% :src="getVideoUrl" frameBorder="0" allowfullscreen >
-            </iframe>       
+            </iframe>
         </div>
     `,
     methods: {
