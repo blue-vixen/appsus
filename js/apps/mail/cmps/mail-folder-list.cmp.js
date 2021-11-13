@@ -8,6 +8,7 @@ export default {
         <ul class="folders clean-list" :class="{menuopen: isMenuOpen}">
             <button class="close-btn" @click="isMenuOpen = !isMenuOpen"></button>
             <li class="inbox-folder" @click="setFolder('inbox')">Inbox<span> {{unreadCount}}</span></li>
+            <!-- <li class="starred-folder" @click="setFolder('starred')">Starred</li> -->
             <li class="sent-folder" @click="setFolder('sent')">Sent</li>
             <li class="draft-folder" @click="setFolder('drafts')">Drafts</li>
             <li class="trash-folder" @click="setFolder('trash')">Trash</li>

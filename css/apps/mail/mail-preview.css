@@ -38,6 +38,12 @@
     content: '\f01c';
 }
 
+.starred-folder::before {
+    content: '\f005';
+    font-family: fa;
+    font-weight: bold;
+}
+
 .sent-folder::before{
     content: '\f14d';
 }
@@ -118,22 +124,24 @@
 }
 
 .btn-expand::before {
-    content: '\f065'
+    content: '\f065';
 }
 .btn-note::before {
-    content: '\f1d8'
+    content: '\f1d8';
 }
 
 .star::before{
+    font-size: 1.5rem;
     font-family: far;
     font-style: normal;
-    content: '\f005'
+    content: '\f005';
 }
 
 .starred::before {
     font-family: fa;
     font-weight: bold;
     color: #ffa500;
+    font-size: 1.5rem;
     
 }
 

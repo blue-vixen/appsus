@@ -9,7 +9,7 @@ export default {
                     <option>All</option>
                     <option>Read</option>
                     <option>Unread</option>
-                    <option>Starred</option>
+                    <!-- <option>Starred</option> -->
                 </select>
                 
             </label>

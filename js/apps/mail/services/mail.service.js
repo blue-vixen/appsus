@@ -114,7 +114,10 @@ function _createMails() {
 function query(criteria) {
     let emails = _createMails()
     const { display, isRead, txt, isStarred } = criteria
-    let filteredMails = emails.filter(email => {
+    let filteredMails = null;
+    // if (isStarred) filteredMails = emails.filter(email => { return email.isStarred = true })
+    // else {
+    filteredMails = emails.filter(email => {
         return email.status === display
     }).filter(email => {
         if (isRead === null) return true
@@ -123,6 +126,7 @@ function query(criteria) {
     }).filter(email => {
         return email.body.toLowerCase().includes(txt) || email.subject.toLowerCase().includes(txt)
     })
+    // }
     console.log(filteredMails)
     return Promise.resolve(filteredMails);
 }
