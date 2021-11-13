@@ -40,6 +40,9 @@ ul {
     height: 100%;
 }
 
+.book-list {
+    justify-content: center;
+}
 
 .book-app {
     flex-grow: 1;
