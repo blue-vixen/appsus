@@ -52,7 +52,8 @@ export default {
         cancel() {
             const msg = this.createMsg('Mail not sent', 'error')
             eventBus.$emit('showMsg', msg)
-            this.$router.push({ path: '/apps/mail' })
+            if (this.$route.query) this.$router.push({ path: '/apps/keep' })
+            else this.$router.push({ path: '/apps/mail' })
         }
     },
     watch: {

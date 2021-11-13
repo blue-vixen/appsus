@@ -84,6 +84,30 @@ margin-inline-end: 4px;
     width: 100%;
 }
 
+/* LARGE */
+
+@media (max-width: 1060px ) {
+    .note-list {
+        column-count: 4;
+    }
+}
+
+/* MEDIUM */
+
+@media (max-width: 860px) {
+    .note-list {
+        column-count: 3;
+    }
+}
+
+/* SMALL */
+
+@media (max-width: 640px) {
+    .note-list {
+        column-count: 2;
+    }
+}
+
 .card{
     display: inline-block;
     margin: 0 0 1em;
