@@ -18,7 +18,7 @@ export default {
                     <div class="color-select color-purple" @click="changeColor('#d7aefb')" title="Purple"></div>
                 </div>
             </div>
-            <button class="edit-send edit-btns" @click="send"></button>
+            <button class="edit-send edit-btns" @click="send(note)"></button>
             <button class="edit-archive edit-btns" @click="setArchive(note)"></button>
             <button class="edit-delete edit-btns" @click="remove(note.id)"></button>
         </div>
@@ -32,8 +32,24 @@ export default {
             eventBus.$emit('changeBgColor', color)
         },
 
-        send() {
-            eventBus.$emit('sendNote')
+        send(note) {
+            console.log(note)
+            switch (note.type) {
+                case 'note-youtube':
+                case 'note-img':
+                    this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}&body=${note.info.url}` })
+                    break;
+                case 'note-txt':
+                    this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}&body=${note.info.txt}` })
+                    break;
+                case 'note-todos':
+                    let strs = note.info.todos.map(todo => {
+                        return todo.txt
+                    })
+                    this.$router.push({ path: `/mail/compose?subject=${note.info.title || 'My Note'}&body=${strs.join(', ')}` })
+                    break;
+            }
+
         },
 
         setArchive(note) {

@@ -116,6 +116,7 @@ margin-inline-end: 4px;
 
 .note-txt p{
     text-align: start;
+    width: 100%;
 }
 
 /* note-todos */
