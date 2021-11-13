@@ -104,8 +104,16 @@ margin-inline-end: 4px;
 
 @media (max-width: 640px) {
     .note-list {
-        column-count: 2;
+        column-count: 1;
     }
+    /* .note-app-layout {
+        flex-direction: column;
+    }
+    
+    .side-menu {
+        flex-direction: row;
+        align-items: space-between;
+    } */
 }
 
 .card{
@@ -141,6 +149,8 @@ margin-inline-end: 4px;
 .note-txt p{
     text-align: start;
     width: 100%;
+    overflow-wrap: break-word;
+    white-space: break-spaces;
 }
 
 /* note-todos */
@@ -301,4 +311,6 @@ iframe{
 
 .note-title{
     text-align: center;
+    overflow-wrap: break-word;
+    white-space: break-spaces;
 }
